@@ -1106,103 +1106,7 @@ const CommitModal = ({
   frequency, setFrequency, duration, setDuration, volunteers, setVolunteers,
   isConfirmed, setIsConfirmed
 }) => {
-  const prediction = useMemo(() => {
-    if (!selectedCenter) return null;
 
-    const residentCount = selectedCenter.resident_count;
-    let centerSize = "Medium";
-    if (residentCount < 70) centerSize = "Small";
-    else if (residentCount > 120) centerSize = "Large";
-
-    const rawCategory = selectedCenter.activity_categories[0] || "Recreation";
-    const activityMap = {
-      "Digital Literacy": "Tech Literacy",
-      "Health & Wellness": "Light Exercise",
-      "Arts & Crafts": "Art Therapy",
-      "Facility Improvement": "Cognitive Games",
-      "Companionship": "Language Class",
-      "Recreation": "Music Therapy"
-    };
-    const mappedActivity = activityMap[rawCategory] || "Music Therapy";
-
-    const filtered = pastPrograms.filter(p => p.activity === mappedActivity);
-    const dataSet = filtered.length > 0 ? filtered : pastPrograms;
-    const isFallback = filtered.length === 0;
-
-    let weightedSum = 0;
-    let weightTotal = 0;
-
-    dataSet.forEach(p => {
-      let weight = 1;
-      if (p.centerSize === centerSize) weight += 1;
-      if (p.industry === company.industry) weight += 1;
-      if (p.frequency === frequency) weight += 1;
-
-      weightedSum += (p.engagementScore * weight);
-      weightTotal += weight;
-    });
-
-    const baseScore = weightTotal > 0 ? (weightedSum / weightTotal) : 0;
-
-    let freqMod = 0;
-    let freqFactorScore = 50;
-    if (frequency === "Weekly") { freqMod = 4; freqFactorScore = 80; }
-    else if (frequency === "One-time") { freqMod = -6; freqFactorScore = 20; }
-
-    let durationWeeks = 0;
-    if (frequency !== "One-time") {
-      if (duration === "1 Month") durationWeeks = 4;
-      else if (duration === "3 Months") durationWeeks = 12;
-      else if (duration === "6 Months") durationWeeks = 24;
-    }
-
-    let durMod = durationWeeks >= 8 ? 3 : 0;
-
-    const optimal = selectedCenter.resident_count * 0.3;
-    const volDeviation = Math.abs(volunteers - optimal) / optimal;
-    const volMod = Math.max(-5, Math.min(5, 5 - volDeviation * 10));
-
-    const rawFinal = baseScore + freqMod + durMod + volMod;
-    const finalScore = Math.max(0, Math.min(100, Math.round(rawFinal)));
-
-    const fitSum = dataSet.reduce((acc, p) => acc + p.engagementScore, 0);
-    const factorFit = dataSet.length > 0 ? Math.round(fitSum / dataSet.length) : 0;
-
-    const matchingIndustryCount = dataSet.filter(p => p.industry === company.industry).length;
-    const factorFamiliarity = dataSet.length > 0 ? Math.round((matchingIndustryCount / dataSet.length) * 100) : 0;
-
-    const factorFrequency = freqFactorScore;
-
-    const respSum = dataSet.reduce((acc, p) => acc + p.attendanceRate, 0);
-    const factorResponsiveness = dataSet.length > 0 ? Math.round(respSum / dataSet.length) : 0;
-
-    let colorClass = "text-amber-500";
-    let bgClass = "bg-amber-50";
-    let label = "Moderate Expected Engagement";
-    if (finalScore < 40) {
-      colorClass = "text-red-500";
-      bgClass = "bg-red-50";
-      label = "Low Expected Engagement";
-    } else if (finalScore > 70) {
-      colorClass = "text-emerald-500";
-      bgClass = "bg-emerald-50";
-      label = "High Expected Engagement";
-    }
-
-    return {
-      score: finalScore,
-      colorClass,
-      bgClass,
-      label,
-      caption: isFallback ? "Based on limited historical data" : `Based on ${filtered.length} similar past programs`,
-      factors: [
-        { name: "Activity-Center Fit", value: factorFit },
-        { name: "Company-Industry Familiarity", value: factorFamiliarity },
-        { name: "Frequency Effect", value: factorFrequency },
-        { name: "Center Responsiveness History", value: factorResponsiveness }
-      ]
-    };
-  }, [selectedCenter, company.industry, frequency, duration, volunteers]);
 
   if (!selectedCenter) return null;
 
@@ -1232,7 +1136,7 @@ const CommitModal = ({
     <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto">
       <div className="bg-white rounded-3xl max-w-4xl w-full flex flex-col md:flex-row overflow-hidden animate-in slide-in-from-bottom-8 duration-300 my-auto shadow-2xl max-h-[90vh]">
 
-        <div className="w-full md:w-1/2 p-8 border-r border-slate-100 overflow-y-auto">
+        <div className="w-full p-8 overflow-y-auto">
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-2xl font-bold text-teal-900">Program Setup</h2>
             <button onClick={() => setShowCommitModal(false)} className="text-slate-400 hover:text-slate-600">✕</button>
@@ -1304,30 +1208,6 @@ const CommitModal = ({
             </button>
           </div>
         </div>
-
-        <div className="w-full md:w-1/2 bg-slate-50 flex flex-col relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-teal-100 rounded-full mix-blend-multiply filter blur-3xl opacity-50 translate-x-1/2 -translate-y-1/2"></div>
-
-          <div className="flex-1 p-8 overflow-y-auto relative z-10 pb-28">
-            <div className="flex items-center gap-2 mb-2 text-teal-800 font-bold">
-              <Zap size={20} className="text-amber-500" /> Engagement Prediction Engine
-            </div>
-            <p className="text-sm text-slate-600 mb-8">
-              Based on historical data of similar programs, here is the predicted success of this configuration. Adjust settings to optimize.
-            </p>
-
-            <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 mb-6 text-center">
-              <div className="text-sm font-medium text-slate-500 mb-2 uppercase tracking-wider">Predicted Score</div>
-              <div className="flex items-end justify-center gap-2">
-                <span className={`text-6xl font-black ${prediction.colorClass}`}>{prediction.score}</span>
-                <span className="text-2xl text-slate-400 mb-1">/100</span>
-              </div>
-              <div className={`inline-block mt-3 px-3 py-1 rounded-full text-sm font-bold ${prediction.bgClass} ${prediction.colorClass}`}>
-                {prediction.label}
-              </div>
-              <div className="text-xs text-slate-400 mt-4 font-medium">
-                {prediction.caption}
-              </div>
             </div>
 
             <div className="space-y-4">
