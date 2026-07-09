@@ -1225,7 +1225,6 @@ const PricingView = ({ company, handleCompanyUpdate }) => {
     { name: 'AI Matching Engine', free: false, premium: true },
     { name: 'Match Reasoning (1-line)', free: false, premium: true },
     { name: 'Confidence Slider', free: false, premium: true },
-    { name: 'Engagement Prediction', free: false, premium: true },
     { name: 'Report Purpose Selector', free: false, premium: true },
     { name: 'ESG-Ready Narrative', free: false, premium: true },
     { name: 'Company Branding', free: false, premium: true },
