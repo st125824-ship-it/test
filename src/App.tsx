@@ -196,6 +196,7 @@ const Sidebar = ({ company, currentView, setCurrentView, handleCompanyUpdate, mo
 
       <NavItem icon={<ClipboardList size={20} />} label="Activity Log" active={currentView === 'activity_log'} onClick={() => { setCurrentView('activity_log'); setMobileOpen(false); }} />
       <NavItem icon={<FileText size={20} />} label="Impact Reports" active={currentView === 'report'} onClick={() => { setCurrentView('report'); setMobileOpen(false); }} />
+      <NavItem icon={<Award size={20} />} label="Pricing & Plans" active={currentView === 'pricing'} onClick={() => { setCurrentView('pricing'); setMobileOpen(false); }} />
       <NavItem icon={<Building2 size={20} />} label="Company Profile" active={currentView === 'onboarding'} onClick={() => { setCurrentView('onboarding'); setMobileOpen(false); }} />
     </nav>
 
@@ -1348,6 +1349,90 @@ const CommitModal = ({
   );
 };
 
+const PricingView = ({ company, handleCompanyUpdate }) => {
+  const features = [
+    { name: 'Signup & Dashboard', free: true, premium: true },
+    { name: 'Optional CSR Profile', free: true, premium: true },
+    { name: 'Verified CSR Badge', free: true, premium: true },
+    { name: 'Browse Centers (Filters)', free: true, premium: true },
+    { name: 'Commitment Flow', free: true, premium: true },
+    { name: 'Activity Log', free: true, premium: true },
+    { name: 'Basic CSR Report + Metrics', free: true, premium: true },
+    { name: 'AI Matching Engine', free: false, premium: true },
+    { name: 'Match Reasoning (1-line)', free: false, premium: true },
+    { name: 'Confidence Slider', free: false, premium: true },
+    { name: 'Engagement Prediction', free: false, premium: true },
+    { name: 'Report Purpose Selector', free: false, premium: true },
+    { name: 'ESG-Ready Narrative', free: false, premium: true },
+    { name: 'Company Branding', free: false, premium: true },
+    { name: 'PDF / Word Export', free: false, premium: true },
+    { name: 'Report History', free: false, premium: true },
+  ];
+
+  const Cell = ({ on }) => on
+    ? <CheckCircle2 className="text-emerald-500 mx-auto" size={20} />
+    : <span className="text-slate-300 block text-center">—</span>;
+
+  return (
+    <div className="max-w-4xl mx-auto space-y-8 animate-in fade-in duration-500">
+      <div className="text-center">
+        <h1 className="text-3xl font-bold text-teal-900 mb-2">Choose Your Plan</h1>
+        <p className="text-slate-600">Start free. Upgrade to Premium for AI matching, engagement prediction, and ESG-ready reports.</p>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className={`bg-white rounded-2xl border-2 p-6 ${company.tier === 'Free' ? 'border-emerald-500 shadow-lg' : 'border-slate-200'}`}>
+          <div className="flex items-center justify-between mb-2">
+            <h2 className="text-xl font-bold text-slate-800">Free</h2>
+            {company.tier === 'Free' && <span className="text-xs font-bold bg-emerald-100 text-emerald-700 px-2 py-1 rounded-full">Current</span>}
+          </div>
+          <p className="text-3xl font-black text-slate-900 mb-1">฿0<span className="text-sm font-medium text-slate-400">/mo</span></p>
+          <p className="text-sm text-slate-500 mb-4">Browse centers & log impact manually.</p>
+          <button onClick={() => handleCompanyUpdate({ tier: 'Free' })} className="w-full py-2.5 rounded-xl font-medium border border-slate-200 text-slate-700 hover:bg-slate-50 transition-colors">
+            {company.tier === 'Free' ? 'Active Plan' : 'Switch to Free'}
+          </button>
+        </div>
+
+        <div className={`bg-white rounded-2xl border-2 p-6 relative ${company.tier === 'Premium' ? 'border-amber-400 shadow-lg' : 'border-slate-200'}`}>
+          <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-amber-400 text-amber-900 text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1">
+            <Sparkles size={12} /> Most Popular
+          </div>
+          <div className="flex items-center justify-between mb-2 mt-2">
+            <h2 className="text-xl font-bold text-teal-900">Premium</h2>
+            {company.tier === 'Premium' && <span className="text-xs font-bold bg-amber-100 text-amber-700 px-2 py-1 rounded-full">Current</span>}
+          </div>
+          <p className="text-3xl font-black text-teal-900 mb-1">฿4,900<span className="text-sm font-medium text-slate-400">/mo</span></p>
+          <p className="text-sm text-slate-500 mb-4">AI matching, prediction & ESG reports.</p>
+          <button onClick={() => handleCompanyUpdate({ tier: 'Premium' })} className="w-full py-2.5 rounded-xl font-bold bg-emerald-600 hover:bg-emerald-700 text-white transition-colors shadow-sm">
+            {company.tier === 'Premium' ? 'Active Plan' : 'Upgrade to Premium'}
+          </button>
+        </div>
+      </div>
+
+      <div className="bg-white rounded-2xl border border-teal-100 shadow-sm overflow-hidden">
+        <table className="w-full text-sm">
+          <thead className="bg-slate-50 border-b border-slate-100">
+            <tr>
+              <th className="px-6 py-4 text-left font-semibold text-slate-700">Feature</th>
+              <th className="px-6 py-4 text-center font-semibold text-slate-600 w-28">Free</th>
+              <th className="px-6 py-4 text-center font-semibold text-teal-700 w-28">Premium</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-slate-100">
+            {features.map((f, i) => (
+              <tr key={i} className="hover:bg-slate-50/50 transition-colors">
+                <td className="px-6 py-3 text-slate-700 font-medium">{f.name}</td>
+                <td className="px-6 py-3"><Cell on={f.free} /></td>
+                <td className="px-6 py-3 bg-emerald-50/30"><Cell on={f.premium} /></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+};
+
 const LandingView = ({ setCurrentView }) => (
   <div className="min-h-screen bg-gradient-to-br from-teal-50 to-emerald-50 flex flex-col items-center justify-center p-6">
     <div className="max-w-4xl w-full text-center space-y-8">
@@ -1703,6 +1788,9 @@ export default function ElderMatchApp() {
           )}
           {currentView === 'report' && (
             <ReportView company={company} handleCompanyUpdate={handleCompanyUpdate} sessions={sessions} />
+          )}
+          {currentView === 'pricing' && (
+  <PricingView company={company} handleCompanyUpdate={handleCompanyUpdate} />
           )}
         </div>
       </main>
