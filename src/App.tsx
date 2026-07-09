@@ -1208,22 +1208,6 @@ const CommitModal = ({
             </button>
           </div>
         </div>
-            </div>
-
-            <div className="space-y-4">
-              <h4 className="text-sm font-bold text-slate-700 mb-2">Impact Factors</h4>
-              {prediction.factors.map((factor, idx) => (
-                <FactorBar key={idx} label={factor.name} value={factor.value} />
-              ))}
-            </div>
-          </div>
-
-          <div className="absolute bottom-0 left-0 right-0 p-4 bg-slate-100/90 backdrop-blur-sm border-t border-slate-200 z-20">
-            <p className="text-[11px] text-slate-500 text-center leading-relaxed font-medium">
-              Generated from our pilot dataset for demonstration. At scale, the same model runs on live session data, sharpening with every match.
-            </p>
-          </div>
-        </div>
       </div>
     </div>
   );
