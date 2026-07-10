@@ -10,6 +10,30 @@ import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend
 } from 'recharts';
 import HostPortal from './host/HostPortal';
+import analyticsData from './data/analytics.json';
+import programsData from './data/programs.json';
+import centersData from './data/centers.json';
+import companiesData from './data/companies.json';
+import segmentsData from './data/segments.json';
+
+// Derive program chart data grouped by month from programs.json
+const _programsByMonth = (() => {
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const buckets: Record<string, { attendance: number; engagement: number; count: number }> = {};
+  (programsData as any[]).forEach((p: any) => {
+    if (!p.programDate || !p.matchAccepted) return;
+    const d = new Date(p.programDate);
+    const key = months[d.getMonth()];
+    if (!buckets[key]) buckets[key] = { attendance: 0, engagement: 0, count: 0 };
+    buckets[key].attendance += p.attendance || 0;
+    if (p.actualEngagementScore) { buckets[key].engagement += p.actualEngagementScore; buckets[key].count += 1; }
+  });
+  const order = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  return order
+    .filter(m => buckets[m])
+    .map(m => ({ month: m, attendance: buckets[m].attendance, engagement: Math.round(buckets[m].count ? buckets[m].engagement / buckets[m].count : 0) }))
+    .slice(-6);
+})();
 
 const PROVINCES = [
   "Bangkok", "Chiang Mai", "Phuket", "Khon Kaen", "Chonburi",
@@ -93,15 +117,22 @@ const MOCK_COMPANY = {
   max_volunteers: 50
 };
 
-const MOCK_HISTORICAL_PROGRAMS = [
-  { id: 'p1', centerId: 'c1', name: 'Digital Seniors 2024', status: 'Completed', startDate: '2024-01-15', endDate: '2024-06-15', totalVolunteers: 45, totalHours: 360, impactScore: 85 },
-  { id: 'p2', centerId: 'c11', name: 'Thonburi Revamp', status: 'Completed', startDate: '2024-03-01', endDate: '2024-03-02', totalVolunteers: 60, totalHours: 480, impactScore: 92 },
-  { id: 'p3', centerId: 'c5', name: 'Cyber Safe Seniors', status: 'Completed', startDate: '2024-08-10', endDate: '2024-11-10', totalVolunteers: 30, totalHours: 240, impactScore: 88 },
-  { id: 'p4', centerId: 'c2', name: 'Health First Q1', status: 'Completed', startDate: '2025-01-10', endDate: '2025-03-30', totalVolunteers: 20, totalHours: 160, impactScore: 78 },
-  { id: 'p5', centerId: 'c8', name: 'Udon Tech Connect', status: 'Completed', startDate: '2025-05-05', endDate: '2025-08-05', totalVolunteers: 25, totalHours: 200, impactScore: 82 },
-];
+const MOCK_HISTORICAL_PROGRAMS = (programsData as any[])
+  .filter((p: any) => p.matchAccepted && p.actualEngagementScore)
+  .slice(0, 5)
+  .map((p: any) => ({
+    id: p.programID,
+    centerId: p.companyID,
+    name: `${p.programType} @ ${p.centerName.split(' ').slice(0, 3).join(' ')}`,
+    status: 'Completed',
+    startDate: p.programDate,
+    endDate: p.programDate,
+    totalVolunteers: p.volunteerHours,
+    totalHours: p.volunteerHours * 8,
+    impactScore: Math.round(p.actualEngagementScore),
+  }));
 
-const MOCK_SESSION_DATA = [
+const MOCK_SESSION_DATA = _programsByMonth.length >= 3 ? _programsByMonth : [
   { month: 'Jan', attendance: 65, engagement: 70 },
   { month: 'Feb', attendance: 75, engagement: 75 },
   { month: 'Mar', attendance: 82, engagement: 80 },
@@ -110,24 +141,16 @@ const MOCK_SESSION_DATA = [
   { month: 'Jun', attendance: 90, engagement: 92 },
 ];
 
-const pastPrograms = [
-  { activity: "Music Therapy", centerSize: "Medium", industry: "Banking", frequency: "Weekly", attendanceRate: 88, engagementScore: 84 },
-  { activity: "Music Therapy", centerSize: "Small", industry: "Tech", frequency: "Monthly", attendanceRate: 75, engagementScore: 70 },
-  { activity: "Music Therapy", centerSize: "Large", industry: "FMCG", frequency: "Weekly", attendanceRate: 91, engagementScore: 89 },
-  { activity: "Cognitive Games",centerSize: "Medium", industry: "Retail", frequency: "Weekly", attendanceRate: 82, engagementScore: 78 },
-  { activity: "Cognitive Games",centerSize: "Small", industry: "Insurance", frequency: "One-time", attendanceRate: 65, engagementScore: 58 },
-  { activity: "Cognitive Games",centerSize: "Large", industry: "Tech", frequency: "Monthly", attendanceRate: 79, engagementScore: 74 },
-  { activity: "Light Exercise", centerSize: "Medium", industry: "Manufacturing", frequency: "Weekly", attendanceRate: 85, engagementScore: 80 },
-  { activity: "Light Exercise", centerSize: "Small", industry: "Banking", frequency: "One-time", attendanceRate: 68, engagementScore: 60 },
-  { activity: "Light Exercise", centerSize: "Large", industry: "FMCG", frequency: "Monthly", attendanceRate: 77, engagementScore: 72 },
-  { activity: "Tech Literacy", centerSize: "Medium", industry: "Tech", frequency: "Weekly", attendanceRate: 90, engagementScore: 88 },
-  { activity: "Tech Literacy", centerSize: "Small", industry: "Retail", frequency: "One-time", attendanceRate: 62, engagementScore: 55 },
-  { activity: "Tech Literacy", centerSize: "Large", industry: "Insurance", frequency: "Monthly", attendanceRate: 80, engagementScore: 76 },
-  { activity: "Art Therapy", centerSize: "Medium", industry: "FMCG", frequency: "Weekly", attendanceRate: 87, engagementScore: 83 },
-  { activity: "Art Therapy", centerSize: "Small", industry: "Manufacturing", frequency: "Monthly", attendanceRate: 71, engagementScore: 66 },
-  { activity: "Language Class", centerSize: "Large", industry: "Banking", frequency: "Weekly", attendanceRate: 89, engagementScore: 85 },
-  { activity: "Language Class", centerSize: "Medium", industry: "Tech", frequency: "One-time", attendanceRate: 66, engagementScore: 59 },
-];
+const pastPrograms = (programsData as any[])
+  .filter((p: any) => p.matchAccepted && p.actualEngagementScore)
+  .map((p: any) => ({
+    activity: p.programType,
+    centerSize: 'Medium',
+    industry: p.industry,
+    frequency: 'Monthly',
+    attendanceRate: p.attendance ? Math.round((p.attendance / 30) * 100) : 70,
+    engagementScore: Math.round(p.actualEngagementScore),
+  }));
 
 const performSemanticMatch = (companyInterests, centers) => {
   const keywords = companyInterests.toLowerCase().match(/\b(\w+)\b/g) || [];
@@ -665,10 +688,15 @@ const ActivityLogView = ({ sessions, setSessions }) => {
 
 const DashboardView = ({ company, setCurrentView, sessions }) => {
   const hasSessions = sessions && sessions.length > 0;
-  const activePrograms = hasSessions ? new Set(sessions.map(s => s.centerId)).size : 2;
-  const totalVolunteers = hasSessions ? sessions.reduce((sum, s) => sum + (Number(s.attendanceCount) || 0), 0) : 155;
-  const hoursContributed = hasSessions ? sessions.reduce((sum, s) => sum + (Number(s.volunteerHours) || 0), 0) : 1440;
-  const eldersImpacted = hasSessions ? sessions.reduce((sum, s) => sum + (Number(s.attendanceCount) || 0), 0) : 280;
+  const _totalPrograms = (analyticsData as any).summary.programInstances;
+  const _totalCompanies = (analyticsData as any).summary.companies;
+  const _acceptedProgs = (programsData as any[]).filter((p: any) => p.matchAccepted);
+  const _totalHours = _acceptedProgs.reduce((sum: number, p: any) => sum + (p.volunteerHours || 0), 0);
+  const _totalAttendance = _acceptedProgs.reduce((sum: number, p: any) => sum + (p.attendance || 0), 0);
+  const activePrograms = hasSessions ? new Set(sessions.map(s => s.centerId)).size : _totalPrograms;
+  const totalVolunteers = hasSessions ? sessions.reduce((sum, s) => sum + (Number(s.attendanceCount) || 0), 0) : _totalCompanies;
+  const hoursContributed = hasSessions ? sessions.reduce((sum, s) => sum + (Number(s.volunteerHours) || 0), 0) : _totalHours;
+  const eldersImpacted = hasSessions ? sessions.reduce((sum, s) => sum + (Number(s.attendanceCount) || 0), 0) : _totalAttendance;
 
   return (
     <div className="space-y-8 animate-in fade-in duration-500">
