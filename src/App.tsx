@@ -11,6 +11,9 @@ import {
 } from 'recharts';
 import HostPortal from './host/HostPortal';
 import AdminDashboard from './admin/AdminDashboard';
+import ContactSection from './components/ContactSection';
+import AppFooter from './components/AppFooter';
+import SupportWidget from './components/SupportWidget';
 import analyticsData from './data/analytics.json';
 import programsData from './data/programs.json';
 import centersData from './data/centers.json';
@@ -1452,6 +1455,7 @@ const PricingView = ({ company, handleCompanyUpdate }) => {
 };
 
 const LandingView = ({ setCurrentView, setRole }) => (
+  <>
   <div className="min-h-screen bg-gradient-to-br from-teal-50 to-emerald-50 flex flex-col items-center justify-center p-6">
     <div className="max-w-5xl w-full text-center space-y-8">
       <div className="inline-flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-sm border border-teal-100">
@@ -1541,6 +1545,9 @@ const LandingView = ({ setCurrentView, setRole }) => (
       </div>
     </div>
   </div>
+  <ContactSection />
+  <AppFooter />
+  </>
 );
 
 const SignUpView = ({ setCurrentView }) => {
@@ -1876,6 +1883,8 @@ export default function ElderMatchApp() {
           )}
         </div>
       </main>
+
+      <SupportWidget />
 
       {showCommitModal && (
         <CommitModal
