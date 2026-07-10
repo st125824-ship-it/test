@@ -46,7 +46,7 @@ const HostSidebar = ({ currentView, setCurrentView, onSwitchRole }: {
   setCurrentView: (v: string) => void;
   onSwitchRole: () => void;
 }) => (
-  <div className="w-64 bg-white border-r border-teal-100 min-h-screen flex flex-col hidden md:flex shrink-0">
+  <div className="w-64 bg-white border-r border-teal-100 self-stretch flex flex-col hidden md:flex shrink-0">
     <div className="p-6 flex items-center gap-3">
       <div className="bg-emerald-500 text-white p-2 rounded-xl">
         <Heart size={24} />
@@ -73,7 +73,7 @@ const HostSidebar = ({ currentView, setCurrentView, onSwitchRole }: {
       </div>
     </div>
 
-    <nav className="flex-1 px-4 space-y-2 overflow-y-auto">
+    <nav className="flex-1 px-4 space-y-2">
       {HOST_NAV_ITEMS.map(item => (
         <button
           key={item.id}
@@ -655,8 +655,8 @@ const HostMessages = () => {
     <div className="space-y-6 animate-in fade-in duration-500 max-w-5xl">
       <SectionHeader title="Messages" subtitle="Communication center for partners, center, and admin." />
 
-      <div className="bg-white rounded-2xl border border-teal-100 shadow-sm overflow-hidden flex flex-col md:flex-row h-[600px]">
-        <div className="w-full md:w-72 border-r border-slate-100 overflow-y-auto shrink-0">
+      <div className="bg-white rounded-2xl border border-teal-100 shadow-sm overflow-hidden flex flex-col md:flex-row">
+        <div className="w-full md:w-72 border-r border-slate-100 shrink-0">
           {HOST_MESSAGES.map(msg => (
             <button
               key={msg.id}
@@ -688,7 +688,7 @@ const HostMessages = () => {
               <p className="text-xs text-slate-500">{activeMsg.role}</p>
             </div>
           </div>
-          <div className="flex-1 overflow-y-auto p-6 space-y-4 bg-slate-50/30">
+          <div className="flex-1 p-6 space-y-4 bg-slate-50/30">
             <div className="flex gap-3">
               <div className="w-8 h-8 rounded-full bg-teal-100 text-teal-700 font-bold text-xs flex items-center justify-center shrink-0">{activeMsg.avatar}</div>
               <div className="bg-white rounded-2xl rounded-tl-sm p-4 max-w-md shadow-sm">
@@ -836,7 +836,7 @@ export default function HostPortal({ onSwitchRole }: HostPortalProps) {
     <div className="min-h-screen bg-slate-50 font-sans text-slate-900 flex">
       <HostSidebar currentView={currentView} setCurrentView={setCurrentView} onSwitchRole={onSwitchRole} />
 
-      <main className="flex-1 flex flex-col h-screen overflow-hidden">
+      <main className="flex-1 flex flex-col min-h-screen">
         <header className="md:hidden bg-white border-b border-teal-100 p-4 flex items-center justify-between shrink-0">
           <div className="flex items-center gap-2">
             <Heart size={20} className="text-emerald-500" />
@@ -871,7 +871,7 @@ export default function HostPortal({ onSwitchRole }: HostPortalProps) {
           </div>
         )}
 
-        <div className="flex-1 overflow-y-auto p-6 md:p-10">
+        <div className="flex-1 p-6 md:p-10">
           <CurrentView setCurrentView={setCurrentView} />
         </div>
       </main>

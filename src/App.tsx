@@ -211,7 +211,7 @@ const NavItem = ({ icon, label, active, onClick, highlight }) => (
 );
 
 const Sidebar = ({ company, currentView, setCurrentView, handleCompanyUpdate, mobileOpen, setMobileOpen, onSwitchRole }) => (
-  <div className={`w-64 bg-white border-r border-teal-100 min-h-screen flex flex-col shrink-0 ${mobileOpen ? 'flex fixed inset-0 z-40' : 'hidden'} md:flex md:relative`}>
+  <div className={`w-64 bg-white border-r border-teal-100 self-stretch flex flex-col shrink-0 ${mobileOpen ? 'flex fixed inset-0 z-40' : 'hidden'} md:flex md:relative`}>
     <div className="p-6 flex items-center gap-3">
       <div className="bg-emerald-500 text-white p-2 rounded-xl">
         <Heart size={24} />
@@ -230,7 +230,7 @@ const Sidebar = ({ company, currentView, setCurrentView, handleCompanyUpdate, mo
       </div>
     </div>
 
-    <nav className="flex-1 px-4 space-y-2 overflow-y-auto">
+    <nav className="flex-1 px-4 space-y-2">
       <NavItem icon={<Home size={20} />} label="Dashboard" active={currentView === 'dashboard'} onClick={() => { setCurrentView('dashboard'); setMobileOpen(false); }} />
       <NavItem icon={<Search size={20} />} label="Discover Centers" active={currentView === 'discover'} onClick={() => { setCurrentView('discover'); setMobileOpen(false); }} />
 
@@ -1837,7 +1837,7 @@ export default function ElderMatchApp() {
         />
       )}
 
-      <main className="flex-1 flex flex-col h-screen overflow-hidden">
+      <main className="flex-1 flex flex-col min-h-screen">
         {!['landing', 'signup', 'verification'].includes(currentView) && (
         <header className="md:hidden bg-white border-b border-teal-100 p-4 flex items-center justify-between shrink-0">
           <div className="flex items-center gap-2">
@@ -1848,7 +1848,7 @@ export default function ElderMatchApp() {
         </header>
         )}
 
-        <div className="flex-1 overflow-y-auto p-6 md:p-10">
+        <div className={`flex-1 ${['landing','signup','verification'].includes(currentView) ? '' : 'p-6 md:p-10'}`}>
           {currentView === 'landing' && <LandingView setCurrentView={setCurrentView} setRole={setRole} />}
           {currentView === 'signup' && <SignUpView setCurrentView={setCurrentView} />}
           {currentView === 'verification' && <VerificationView setCurrentView={setCurrentView} />}
