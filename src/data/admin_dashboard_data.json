@@ -1,25 +1,31 @@
 {
   "meta": {
-    "datasetSize": "187 CSR program instances across 78 companies",
-    "note": "Synthetic data generated for demonstration; figures match the Analytics & KPI Dashboard Excel workbook exactly."
+    "datasetSize": "187 CSR program instances across 78 active companies, plus 30 onboarding-abandoned signups (108 total signups)",
+    "note": "Synthetic data generated for demonstration; figures match the Analytics & KPI Dashboard Excel workbook exactly as of this export. Numbers changed from any earlier version of this file — replace it entirely, don't merge."
   },
   "kpis": [
     {
       "label": "AI Match Acceptance Rate",
       "sublabel": "Premium / AI-Matched only",
-      "value": 63.8,
+      "value": 63.3,
       "format": "percent"
     },
     {
       "label": "Free-to-Paid Conversion Rate",
       "sublabel": "Self-Serve → Premium",
-      "value": 54.5,
+      "value": 63.6,
       "format": "percent"
     },
     {
       "label": "Repeat CSR Program Rate",
       "sublabel": "Companies with 2+ programs",
       "value": 76.9,
+      "format": "percent"
+    },
+    {
+      "label": "Profile Completion Rate",
+      "sublabel": "Onboarding funnel, all signups",
+      "value": 72.2,
       "format": "percent"
     }
   ],
@@ -36,12 +42,20 @@
     { "industry": "Tourism & Hospitality", "programs": 24 }
   ],
   "conversionByChannel": [
-    { "channel": "Outbound - Named Account", "conversionRate": 70.0 },
+    { "channel": "Outbound - Named Account", "conversionRate": 80.0 },
     { "channel": "Networking/Events & Consulting", "conversionRate": 45.5 },
-    { "channel": "Inbound - Paid Social", "conversionRate": 46.2 },
-    { "channel": "Inbound - Organic Content", "conversionRate": 40.0 },
-    { "channel": "Referral Program", "conversionRate": 75.0 },
+    { "channel": "Inbound - Paid Social", "conversionRate": 53.8 },
+    { "channel": "Inbound - Organic Content", "conversionRate": 80.0 },
+    { "channel": "Referral Program", "conversionRate": 62.5 },
     { "channel": "CSR Passport", "conversionRate": 66.7 }
+  ],
+  "profileCompletionByChannel": [
+    { "channel": "Outbound - Named Account", "totalSignups": 41, "completionRate": 63.4 },
+    { "channel": "Networking/Events & Consulting", "totalSignups": 17, "completionRate": 88.2 },
+    { "channel": "Inbound - Paid Social", "totalSignups": 18, "completionRate": 77.8 },
+    { "channel": "Inbound - Organic Content", "totalSignups": 13, "completionRate": 76.9 },
+    { "channel": "Referral Program", "totalSignups": 11, "completionRate": 72.7 },
+    { "channel": "CSR Passport", "totalSignups": 8, "completionRate": 62.5 }
   ],
   "churnRiskDistribution": [
     { "risk": "Low", "count": 83, "pct": 44.4 },
@@ -53,14 +67,5 @@
     { "sequence": "2nd Program", "avgEngagement": 62.8 },
     { "sequence": "3rd Program", "avgEngagement": 65.7 },
     { "sequence": "4th+ Program", "avgEngagement": 64.9 }
-  ],
-  "manualVsAiMatched": [
-    { "type": "Manual Browse (Self-Serve)", "commitRate": 59.2, "avgEngagement": 62.3 },
-    { "type": "AI-Matched (Premium)", "commitRate": 63.8, "avgEngagement": 61.8 }
-  ],
-  "benchmarkBandDistribution": [
-    { "band": "Top 25%", "pct": 7.7 },
-    { "band": "Above Average", "pct": 51.3 },
-    { "band": "Room to Grow", "pct": 41.0 }
   ]
 }
