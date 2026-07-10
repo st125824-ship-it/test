@@ -4,12 +4,13 @@ import {
   CheckCircle2, Sparkles, FileText, Download,
   MapPin, Clock, Star, ArrowRight, ShieldCheck,
   Activity, Award, Zap, Home, ClipboardList,
-  Phone, Mail, MessageCircle, User, Briefcase, MessageSquare, Contact
+  Phone, Mail, MessageCircle, User, Briefcase, MessageSquare, Contact, BarChart3
 } from 'lucide-react';
 import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend
 } from 'recharts';
 import HostPortal from './host/HostPortal';
+import AdminDashboard from './admin/AdminDashboard';
 import analyticsData from './data/analytics.json';
 import programsData from './data/programs.json';
 import centersData from './data/centers.json';
@@ -1467,7 +1468,7 @@ const LandingView = ({ setCurrentView, setRole }) => (
         Auto-generate ESG reports. Predict engagement before you commit.
       </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto pt-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto pt-4">
         <button
           onClick={() => { setRole('company'); setCurrentView('signup'); }}
           className="group bg-white rounded-3xl p-8 text-left border-2 border-teal-100 hover:border-emerald-400 shadow-sm hover:shadow-xl transition-all"
@@ -1497,6 +1498,22 @@ const LandingView = ({ setCurrentView, setRole }) => (
           </p>
           <span className="text-sm font-bold text-teal-600 flex items-center gap-1 group-hover:gap-2 transition-all">
             Enter Host Portal <ArrowRight size={16} />
+          </span>
+        </button>
+
+        <button
+          onClick={() => { setRole('admin'); setCurrentView('admin_dashboard'); }}
+          className="group bg-white rounded-3xl p-8 text-left border-2 border-teal-100 hover:border-emerald-400 shadow-sm hover:shadow-xl transition-all"
+        >
+          <div className="w-14 h-14 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+            <BarChart3 size={28} />
+          </div>
+          <h3 className="text-xl font-bold text-teal-900 mb-2">I'm an Admin</h3>
+          <p className="text-sm text-slate-600 mb-4 leading-relaxed">
+            View platform-wide analytics, KPIs, churn risk, and benchmark performance across all CSR programs.
+          </p>
+          <span className="text-sm font-bold text-indigo-600 flex items-center gap-1 group-hover:gap-2 transition-all">
+            Enter Admin Portal <ArrowRight size={16} />
           </span>
         </button>
       </div>
@@ -1729,7 +1746,7 @@ const VerificationView = ({ setCurrentView }) => {
 };
 
 export default function ElderMatchApp() {
-  const [role, setRole] = useState<'none' | 'company' | 'host'>('none');
+  const [role, setRole] = useState<'none' | 'company' | 'host' | 'admin'>('none');
   const [currentView, setCurrentView] = useState('landing');
   const [company, setCompany] = useState(MOCK_COMPANY);
   const [sessions, setSessions] = useState([]);
@@ -1793,6 +1810,10 @@ export default function ElderMatchApp() {
 
   if (role === 'host') {
     return <HostPortal onSwitchRole={switchToCompany} />;
+  }
+
+  if (role === 'admin') {
+    return <AdminDashboard onBack={switchToCompany} />;
   }
 
   return (

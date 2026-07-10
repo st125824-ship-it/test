@@ -1,0 +1,66 @@
+{
+  "meta": {
+    "datasetSize": "187 CSR program instances across 78 companies",
+    "note": "Synthetic data generated for demonstration; figures match the Analytics & KPI Dashboard Excel workbook exactly."
+  },
+  "kpis": [
+    {
+      "label": "AI Match Acceptance Rate",
+      "sublabel": "Premium / AI-Matched only",
+      "value": 63.8,
+      "format": "percent"
+    },
+    {
+      "label": "Free-to-Paid Conversion Rate",
+      "sublabel": "Self-Serve → Premium",
+      "value": 54.5,
+      "format": "percent"
+    },
+    {
+      "label": "Repeat CSR Program Rate",
+      "sublabel": "Companies with 2+ programs",
+      "value": 76.9,
+      "format": "percent"
+    }
+  ],
+  "programsByIndustry": [
+    { "industry": "Banking & Finance", "programs": 15 },
+    { "industry": "Energy & Utilities", "programs": 16 },
+    { "industry": "Food & Beverage", "programs": 16 },
+    { "industry": "Insurance", "programs": 17 },
+    { "industry": "Logistics & Transport", "programs": 16 },
+    { "industry": "Manufacturing", "programs": 18 },
+    { "industry": "Real Estate & Construction", "programs": 22 },
+    { "industry": "Retail & Consumer", "programs": 28 },
+    { "industry": "Technology & Telecom", "programs": 15 },
+    { "industry": "Tourism & Hospitality", "programs": 24 }
+  ],
+  "conversionByChannel": [
+    { "channel": "Outbound - Named Account", "conversionRate": 70.0 },
+    { "channel": "Networking/Events & Consulting", "conversionRate": 45.5 },
+    { "channel": "Inbound - Paid Social", "conversionRate": 46.2 },
+    { "channel": "Inbound - Organic Content", "conversionRate": 40.0 },
+    { "channel": "Referral Program", "conversionRate": 75.0 },
+    { "channel": "CSR Passport", "conversionRate": 66.7 }
+  ],
+  "churnRiskDistribution": [
+    { "risk": "Low", "count": 83, "pct": 44.4 },
+    { "risk": "Medium", "count": 45, "pct": 24.1 },
+    { "risk": "High", "count": 59, "pct": 31.6 }
+  ],
+  "engagementBySequence": [
+    { "sequence": "1st Program", "avgEngagement": 59.1 },
+    { "sequence": "2nd Program", "avgEngagement": 62.8 },
+    { "sequence": "3rd Program", "avgEngagement": 65.7 },
+    { "sequence": "4th+ Program", "avgEngagement": 64.9 }
+  ],
+  "manualVsAiMatched": [
+    { "type": "Manual Browse (Self-Serve)", "commitRate": 59.2, "avgEngagement": 62.3 },
+    { "type": "AI-Matched (Premium)", "commitRate": 63.8, "avgEngagement": 61.8 }
+  ],
+  "benchmarkBandDistribution": [
+    { "band": "Top 25%", "pct": 7.7 },
+    { "band": "Above Average", "pct": 51.3 },
+    { "band": "Room to Grow", "pct": 41.0 }
+  ]
+}
