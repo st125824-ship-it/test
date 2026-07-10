@@ -42,6 +42,27 @@ const MOCK_CENTERS = [
   { id: 'c20', name: 'Chao Phraya Elders', province: 'Ayutthaya', resident_count: 115, need_description: 'Seeking volunteers to teach basic internet safety and scam prevention.', activity_categories: ['Digital Literacy'], rating: 4.9 },
 ];
 
+const CENTER_CONTACTS = {
+  default: {
+    contactPerson: 'Center Coordinator',
+    contactRole: 'CSR Liaison',
+    phone: '080-000-0000',
+    email: 'contact@eldercenter.or.th',
+    lineId: '@eldercenter',
+    contactHours: '09:00 - 17:00'
+  },
+
+  c1: {
+    contactPerson: 'Suda Chanthong',
+    contactRole: 'Center Director',
+    phone: '081-234-5678',
+    email: 'suda@bankhae.or.th',
+    lineId: '@bankhae',
+    contactHours: '09:00 - 17:00'
+  }
+};
+
+
 const MOCK_COMPANY = {
   id: 'comp1',
   name: 'TechFlow Solutions (Thailand)',
@@ -1093,6 +1114,9 @@ const CommitModal = ({
 }) => {
   const prediction = useMemo(() => {
     if (!selectedCenter) return null;
+    
+    const centerContact =
+  CENTER_CONTACTS[selectedCenter.id] || CENTER_CONTACTS.default;
 
     const residentCount = selectedCenter.resident_count;
     let centerSize = "Medium";
@@ -1227,6 +1251,58 @@ const CommitModal = ({
             <h3 className="font-bold text-slate-800 mb-1">{selectedCenter.name}</h3>
             <p className="text-sm text-slate-500 flex items-center gap-1"><MapPin size={14}/> {selectedCenter.province}</p>
           </div>
+          
+          <div className="mb-6 p-4 bg-white rounded-xl border border-slate-200">
+  <h3 className="font-bold text-slate-800 mb-4">
+    Contact Information
+  </h3>
+
+  <div className="grid grid-cols-2 gap-4 text-sm">
+
+    <div>
+      <p className="text-slate-500">Contact Person</p>
+      <p className="font-semibold">
+        {centerContact.contactPerson}
+      </p>
+    </div>
+
+    <div>
+      <p className="text-slate-500">Position</p>
+      <p className="font-semibold">
+        {centerContact.contactRole}
+      </p>
+    </div>
+
+    <div>
+      <p className="text-slate-500">Phone</p>
+      <p className="font-semibold">
+        {centerContact.phone}
+      </p>
+    </div>
+
+    <div>
+      <p className="text-slate-500">Email</p>
+      <p className="font-semibold break-all">
+        {centerContact.email}
+      </p>
+    </div>
+
+    <div>
+      <p className="text-slate-500">LINE ID</p>
+      <p className="font-semibold">
+        {centerContact.lineId}
+      </p>
+    </div>
+
+    <div>
+      <p className="text-slate-500">Contact Hours</p>
+      <p className="font-semibold">
+        {centerContact.contactHours}
+      </p>
+    </div>
+
+  </div>
+</div>
 
           <div className="space-y-6">
             <div>
