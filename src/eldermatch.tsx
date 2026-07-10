@@ -1112,11 +1112,14 @@ const CommitModal = ({
   frequency, setFrequency, duration, setDuration, volunteers, setVolunteers,
   isConfirmed, setIsConfirmed 
 }) => {
+if (!selectedCenter) return null;
+
+const centerContact =
+  CENTER_CONTACTS[selectedCenter.id] || CENTER_CONTACTS.default;
+  
   const prediction = useMemo(() => {
     if (!selectedCenter) return null;
-    
-    const centerContact =
-  CENTER_CONTACTS[selectedCenter.id] || CENTER_CONTACTS.default;
+
 
     const residentCount = selectedCenter.resident_count;
     let centerSize = "Medium";
