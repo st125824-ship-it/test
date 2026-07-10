@@ -3,7 +3,8 @@ import {
   Heart, Users, Building2, Search, ChevronRight,
   CheckCircle2, Sparkles, FileText, Download,
   MapPin, Clock, Star, ArrowRight, ShieldCheck,
-  Activity, Award, Zap, Home, ClipboardList
+  Activity, Award, Zap, Home, ClipboardList,
+  Phone, Mail, MessageCircle, User, Briefcase, MessageSquare, Contact
 } from 'lucide-react';
 import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend
@@ -41,6 +42,27 @@ const MOCK_CENTERS = [
   { id: 'c19', name: 'Koh Samui Silver Sands', province: 'Surat Thani', resident_count: 40, need_description: 'Small center needing structural repairs after monsoon season.', activity_categories: ['Facility Improvement'], rating: 4.0 },
   { id: 'c20', name: 'Chao Phraya Elders', province: 'Ayutthaya', resident_count: 115, need_description: 'Seeking volunteers to teach basic internet safety and scam prevention.', activity_categories: ['Digital Literacy'], rating: 4.9 },
 ];
+
+const CENTER_CONTACTS = {
+  default: {
+    contactPerson: 'Center Coordinator',
+    contactRole: 'CSR Partnership Liaison',
+    phone: '02-000-0000',
+    email: 'partnerships@eldercenter.or.th',
+    lineId: '@eldercenter',
+    preferredMethod: 'Email',
+    contactHours: 'Mon-Fri, 09:00 - 17:00 ICT'
+  },
+  c1: {
+    contactPerson: 'Suda Chanthong',
+    contactRole: 'Center Director',
+    phone: '081-234-5678',
+    email: 'suda@bankhae.or.th',
+    lineId: '@bankhae',
+    preferredMethod: 'LINE',
+    contactHours: 'Mon-Fri, 09:00 - 17:00 ICT'
+  }
+};
 
 const MOCK_COMPANY = {
   id: 'comp1',
@@ -1132,6 +1154,10 @@ const CommitModal = ({
     );
   }
 
+  const centerContact =
+    CENTER_CONTACTS[selectedCenter.id] || CENTER_CONTACTS.default;
+  const isFallback = !CENTER_CONTACTS[selectedCenter.id];
+
   return (
     <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto">
       <div className="bg-white rounded-3xl max-w-4xl w-full flex flex-col md:flex-row overflow-hidden animate-in slide-in-from-bottom-8 duration-300 my-auto shadow-2xl max-h-[90vh]">
@@ -1145,6 +1171,99 @@ const CommitModal = ({
           <div className="mb-6 p-4 bg-slate-50 rounded-xl border border-slate-100">
             <h3 className="font-bold text-slate-800 mb-1">{selectedCenter.name}</h3>
             <p className="text-sm text-slate-500 flex items-center gap-1"><MapPin size={14}/> {selectedCenter.province}</p>
+          </div>
+
+          <div className="mb-6 rounded-2xl border border-teal-200 bg-gradient-to-br from-teal-50 via-white to-emerald-50 overflow-hidden shadow-sm">
+            <div className="px-5 py-4 bg-gradient-to-r from-teal-700 to-emerald-700 flex items-center justify-between">
+              <div className="flex items-center gap-2.5 text-white">
+                <Contact size={18} />
+                <h3 className="font-bold tracking-tight">Stakeholder Contact</h3>
+              </div>
+              <span className="text-[10px] uppercase tracking-wider font-bold text-teal-100 bg-white/15 px-2.5 py-1 rounded-full">
+                CSR Partnership
+              </span>
+            </div>
+
+            <div className="p-5">
+              <div className="flex items-start gap-4 pb-4 mb-4 border-b border-teal-100">
+                <div className="shrink-0 w-12 h-12 rounded-xl bg-teal-600 text-white flex items-center justify-center shadow-sm">
+                  <User size={22} />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <p className="text-[11px] uppercase tracking-wider font-semibold text-teal-600">Primary Contact</p>
+                  <p className="font-bold text-slate-800 truncate">{centerContact.contactPerson}</p>
+                  <p className="text-sm text-slate-500 flex items-center gap-1.5 mt-0.5">
+                    <Briefcase size={13} className="text-slate-400" /> {centerContact.contactRole}
+                  </p>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-3.5">
+                <div className="flex items-center gap-3">
+                  <div className="shrink-0 w-9 h-9 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center">
+                    <Phone size={16} />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-[11px] uppercase tracking-wider font-semibold text-slate-400">Direct Phone</p>
+                    <p className="text-sm font-semibold text-slate-800">{centerContact.phone}</p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <div className="shrink-0 w-9 h-9 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center">
+                    <Mail size={16} />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-[11px] uppercase tracking-wider font-semibold text-slate-400">Email</p>
+                    <p className="text-sm font-semibold text-slate-800 truncate">{centerContact.email}</p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <div className="shrink-0 w-9 h-9 rounded-lg bg-green-50 text-green-600 flex items-center justify-center">
+                    <MessageCircle size={16} />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-[11px] uppercase tracking-wider font-semibold text-slate-400">LINE Contact</p>
+                    <p className="text-sm font-semibold text-slate-800">{centerContact.lineId}</p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <div className="shrink-0 w-9 h-9 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center">
+                    <MessageSquare size={16} />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-[11px] uppercase tracking-wider font-semibold text-slate-400">Preferred Method</p>
+                    <p className="text-sm font-semibold text-slate-800">{centerContact.preferredMethod}</p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3 sm:col-span-2">
+                  <div className="shrink-0 w-9 h-9 rounded-lg bg-teal-50 text-teal-600 flex items-center justify-center">
+                    <Clock size={16} />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-[11px] uppercase tracking-wider font-semibold text-slate-400">Best Contact Hours</p>
+                    <p className="text-sm font-semibold text-slate-800">{centerContact.contactHours}</p>
+                  </div>
+                </div>
+              </div>
+
+              {isFallback && (
+                <div className="mt-4 pt-4 border-t border-dashed border-teal-200 flex items-start gap-2.5">
+                  <div className="shrink-0 w-7 h-7 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center">
+                    <Sparkles size={14} />
+                  </div>
+                  <div>
+                    <p className="text-xs font-bold text-amber-700">Using fallback contact details</p>
+                    <p className="text-xs text-amber-600 leading-relaxed mt-0.5">
+                      Center-specific contact information is unavailable. These are default partnership channels — confirm directly before scheduling.
+                    </p>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
 
           <div className="space-y-6">
