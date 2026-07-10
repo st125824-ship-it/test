@@ -1,0 +1,220 @@
+{
+  "performanceByIndustry": [
+    {
+      "industry": "Banking & Finance",
+      "numberCompanies": 6,
+      "totalPrograms": 15,
+      "avgActualEngagement": 57.9,
+      "matchAcceptanceRate": 0.533333333333333,
+      "repeatRate": 0.666666666666667
+    },
+    {
+      "industry": "Energy & Utilities",
+      "numberCompanies": 5,
+      "totalPrograms": 16,
+      "avgActualEngagement": 62.3571428571429,
+      "matchAcceptanceRate": 0.4375,
+      "repeatRate": 0.8
+    },
+    {
+      "industry": "Food & Beverage",
+      "numberCompanies": 6,
+      "totalPrograms": 16,
+      "avgActualEngagement": 67.6571428571429,
+      "matchAcceptanceRate": 0.875,
+      "repeatRate": 0.833333333333333
+    },
+    {
+      "industry": "Insurance",
+      "numberCompanies": 6,
+      "totalPrograms": 17,
+      "avgActualEngagement": 65.7375,
+      "matchAcceptanceRate": 0.470588235294118,
+      "repeatRate": 0.833333333333333
+    },
+    {
+      "industry": "Logistics & Transport",
+      "numberCompanies": 8,
+      "totalPrograms": 16,
+      "avgActualEngagement": 62.0333333333333,
+      "matchAcceptanceRate": 0.75,
+      "repeatRate": 0.75
+    },
+    {
+      "industry": "Manufacturing",
+      "numberCompanies": 8,
+      "totalPrograms": 18,
+      "avgActualEngagement": 62.5666666666667,
+      "matchAcceptanceRate": 0.5,
+      "repeatRate": 0.875
+    },
+    {
+      "industry": "Real Estate & Construction",
+      "numberCompanies": 11,
+      "totalPrograms": 22,
+      "avgActualEngagement": 62.94,
+      "matchAcceptanceRate": 0.454545454545455,
+      "repeatRate": 0.727272727272727
+    },
+    {
+      "industry": "Retail & Consumer",
+      "numberCompanies": 11,
+      "totalPrograms": 28,
+      "avgActualEngagement": 58.9772727272727,
+      "matchAcceptanceRate": 0.785714285714286,
+      "repeatRate": 0.818181818181818
+    },
+    {
+      "industry": "Technology & Telecom",
+      "numberCompanies": 7,
+      "totalPrograms": 15,
+      "avgActualEngagement": 58.85,
+      "matchAcceptanceRate": 0.533333333333333,
+      "repeatRate": 0.714285714285714
+    },
+    {
+      "industry": "Tourism & Hospitality",
+      "numberCompanies": 10,
+      "totalPrograms": 24,
+      "avgActualEngagement": 61.5894736842105,
+      "matchAcceptanceRate": 0.791666666666667,
+      "repeatRate": 0.7
+    }
+  ],
+  "performanceByAcquisitionChannel": [
+    {
+      "acquisitionChannel": "Outbound - Named Account",
+      "numberCompanies": 26,
+      "freeToPaidConversionRate": 0.7,
+      "avgProgramsCompany": 2.73076923076923,
+      "repeatRate": 0.961538461538462
+    },
+    {
+      "acquisitionChannel": "Networking/Events & Consulting",
+      "numberCompanies": 15,
+      "freeToPaidConversionRate": 0.454545454545455,
+      "avgProgramsCompany": 2.2,
+      "repeatRate": 0.666666666666667
+    },
+    {
+      "acquisitionChannel": "Inbound - Paid Social",
+      "numberCompanies": 14,
+      "freeToPaidConversionRate": 0.461538461538462,
+      "avgProgramsCompany": 2.07142857142857,
+      "repeatRate": 0.642857142857143
+    },
+    {
+      "acquisitionChannel": "Inbound - Organic Content",
+      "numberCompanies": 10,
+      "freeToPaidConversionRate": 0.4,
+      "avgProgramsCompany": 2.7,
+      "repeatRate": 0.9
+    },
+    {
+      "acquisitionChannel": "Referral Program",
+      "numberCompanies": 8,
+      "freeToPaidConversionRate": 0.75,
+      "avgProgramsCompany": 2.25,
+      "repeatRate": 0.625
+    },
+    {
+      "acquisitionChannel": "CSR Passport",
+      "numberCompanies": 5,
+      "freeToPaidConversionRate": 0.666666666666667,
+      "avgProgramsCompany": 1.8,
+      "repeatRate": 0.4
+    }
+  ],
+  "performanceByPersona": [
+    {
+      "persona": "Compliance Sprinter",
+      "numberCompanies": 33,
+      "avgBudgetTHB": 44004.488372093,
+      "avgActualEngagement": 63.5404255319149,
+      "currentlyPremium": 0.878787878787879,
+      "highChurnRiskInstances": 0.383720930232558
+    },
+    {
+      "persona": "Feel-Good Founder",
+      "numberCompanies": 45,
+      "avgBudgetTHB": 30455.5445544554,
+      "avgActualEngagement": 60.8828571428572,
+      "currentlyPremium": 0.533333333333333,
+      "highChurnRiskInstances": 0.257425742574257
+    }
+  ],
+  "engagementByProgramSequenceDoesTheAIGetSmarterWithRepeatMatches": [
+    {
+      "programSequence": "1st Program",
+      "numberProgramInstances": 78,
+      "avgAIPredictedEngagement": 58.425641025641,
+      "avgActualEngagement": 59.1125
+    },
+    {
+      "programSequence": "2nd Program",
+      "numberProgramInstances": 60,
+      "avgAIPredictedEngagement": 60.8233333333333,
+      "avgActualEngagement": 62.7820512820513
+    },
+    {
+      "programSequence": "3rd Program",
+      "numberProgramInstances": 34,
+      "avgAIPredictedEngagement": 64.9941176470588,
+      "avgActualEngagement": 65.665
+    },
+    {
+      "programSequence": "4th+ Program",
+      "numberProgramInstances": 15,
+      "avgAIPredictedEngagement": 66.5466666666667,
+      "avgActualEngagement": 64.9
+    }
+  ],
+  "churnRiskDistributionAllProgramInstances": [
+    {
+      "churnRisk": "Low",
+      "numberInstances": 83,
+      "ofTotal": 0.443850267379679
+    },
+    {
+      "churnRisk": "Medium",
+      "numberInstances": 45,
+      "ofTotal": 0.240641711229947
+    },
+    {
+      "churnRisk": "High",
+      "numberInstances": 59,
+      "ofTotal": 0.315508021390374
+    }
+  ],
+  "benchmarkBandDistributionAcceptedMatchesOnly": [
+    {
+      "benchmarkBand": "Top 25%",
+      "numberInstances": 9,
+      "ofAcceptedMatches": 0.0769230769230769
+    },
+    {
+      "benchmarkBand": "Above Average",
+      "numberInstances": 60,
+      "ofAcceptedMatches": 0.512820512820513
+    },
+    {
+      "benchmarkBand": "Room to Grow",
+      "numberInstances": 48,
+      "ofAcceptedMatches": 0.41025641025641
+    }
+  ],
+  "manualBrowseSelfServeVsAIMatchedPremiumDoesTheAIAddValue": [
+    {
+      "matchType": "Manual Browse (Self-Serve)",
+      "numberInstances": 49,
+      "commitAcceptanceRate": 0.591836734693878,
+      "avgActualEngagement": 62.3275862068966
+    },
+    {
+      "matchType": "AI-Matched (Premium)",
+      "numberInstances": 138,
+      "commitAcceptanceRate": 0.63768115942029,
+      "avgActualEngagement": 61.8261363636364
+    }
+  ]
+}
