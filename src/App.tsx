@@ -9,6 +9,7 @@ import {
 import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend
 } from 'recharts';
+import HostPortal from './host/HostPortal';
 
 const PROVINCES = [
   "Bangkok", "Chiang Mai", "Phuket", "Khon Kaen", "Chonburi",
@@ -182,7 +183,7 @@ const NavItem = ({ icon, label, active, onClick, highlight }) => (
   </button>
 );
 
-const Sidebar = ({ company, currentView, setCurrentView, handleCompanyUpdate, mobileOpen, setMobileOpen }) => (
+const Sidebar = ({ company, currentView, setCurrentView, handleCompanyUpdate, mobileOpen, setMobileOpen, onSwitchRole }) => (
   <div className={`w-64 bg-white border-r border-teal-100 min-h-screen flex flex-col shrink-0 ${mobileOpen ? 'flex fixed inset-0 z-40' : 'hidden'} md:flex md:relative`}>
     <div className="p-6 flex items-center gap-3">
       <div className="bg-emerald-500 text-white p-2 rounded-xl">
@@ -222,10 +223,16 @@ const Sidebar = ({ company, currentView, setCurrentView, handleCompanyUpdate, mo
       <NavItem icon={<Building2 size={20} />} label="Company Profile" active={currentView === 'onboarding'} onClick={() => { setCurrentView('onboarding'); setMobileOpen(false); }} />
     </nav>
 
-    <div className="p-4 border-t border-teal-100">
+    <div className="p-4 border-t border-teal-100 space-y-2">
+      <button
+        onClick={onSwitchRole}
+        className="w-full text-sm text-teal-600 hover:text-teal-800 font-medium py-2.5 rounded-lg hover:bg-teal-50 flex items-center justify-center gap-2 transition-colors"
+      >
+        <ArrowRight size={16} /> Switch to Host Portal
+      </button>
       <button
         onClick={() => handleCompanyUpdate({ tier: company.tier === 'Free' ? 'Premium' : 'Free' })}
-        className="w-full text-sm text-teal-600 hover:text-teal-800 font-medium py-2"
+        className="w-full text-xs text-slate-400 hover:text-slate-600 font-medium py-1"
       >
         Toggle Tier (Dev: Currently {company.tier})
       </button>
@@ -1415,9 +1422,9 @@ const PricingView = ({ company, handleCompanyUpdate }) => {
   );
 };
 
-const LandingView = ({ setCurrentView }) => (
+const LandingView = ({ setCurrentView, setRole }) => (
   <div className="min-h-screen bg-gradient-to-br from-teal-50 to-emerald-50 flex flex-col items-center justify-center p-6">
-    <div className="max-w-4xl w-full text-center space-y-8">
+    <div className="max-w-5xl w-full text-center space-y-8">
       <div className="inline-flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-sm border border-teal-100">
         <Heart className="text-emerald-500" size={16} />
         <span className="text-sm font-medium text-teal-800">AI-Powered CSR Platform</span>
@@ -1432,22 +1439,50 @@ const LandingView = ({ setCurrentView }) => (
         Auto-generate ESG reports. Predict engagement before you commit.
       </p>
 
-      <div className="flex flex-wrap justify-center gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto pt-4">
         <button
-          onClick={() => setCurrentView('signup')}
-          className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-3 rounded-xl font-bold shadow-lg shadow-emerald-200 transition-all"
+          onClick={() => { setRole('company'); setCurrentView('signup'); }}
+          className="group bg-white rounded-3xl p-8 text-left border-2 border-teal-100 hover:border-emerald-400 shadow-sm hover:shadow-xl transition-all"
         >
-          Get Started Free
+          <div className="w-14 h-14 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+            <Building2 size={28} />
+          </div>
+          <h3 className="text-xl font-bold text-teal-900 mb-2">I'm a Company</h3>
+          <p className="text-sm text-slate-600 mb-4 leading-relaxed">
+            Find elderly care centers that match your ESG goals, predict engagement, and generate impact reports.
+          </p>
+          <span className="text-sm font-bold text-emerald-600 flex items-center gap-1 group-hover:gap-2 transition-all">
+            Enter Company Portal <ArrowRight size={16} />
+          </span>
         </button>
+
         <button
-          onClick={() => setCurrentView('dashboard')}
-          className="bg-white hover:bg-slate-50 text-teal-700 px-8 py-3 rounded-xl font-bold border border-teal-200 transition-all"
+          onClick={() => { setRole('host'); setCurrentView('host_dashboard'); }}
+          className="group bg-white rounded-3xl p-8 text-left border-2 border-teal-100 hover:border-emerald-400 shadow-sm hover:shadow-xl transition-all"
         >
-          View Demo
+          <div className="w-14 h-14 rounded-2xl bg-teal-50 text-teal-600 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+            <Heart size={28} />
+          </div>
+          <h3 className="text-xl font-bold text-teal-900 mb-2">I'm an Elder Care Center</h3>
+          <p className="text-sm text-slate-600 mb-4 leading-relaxed">
+            Publish support needs, receive applications from companies, schedule volunteers, and track your impact.
+          </p>
+          <span className="text-sm font-bold text-teal-600 flex items-center gap-1 group-hover:gap-2 transition-all">
+            Enter Host Portal <ArrowRight size={16} />
+          </span>
         </button>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-12">
+      <div className="flex flex-wrap justify-center gap-4 pt-4">
+        <button
+          onClick={() => { setRole('company'); setCurrentView('dashboard'); }}
+          className="text-teal-700 hover:text-teal-900 px-6 py-2.5 rounded-xl font-medium border border-teal-200 bg-white/60 hover:bg-white transition-all"
+        >
+          View Company Demo
+        </button>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-8">
         {[
           { num: "20%+", label: "Thai population aged 60+" },
           { num: "23%", label: "Seniors living alone" },
@@ -1666,6 +1701,7 @@ const VerificationView = ({ setCurrentView }) => {
 };
 
 export default function ElderMatchApp() {
+  const [role, setRole] = useState<'none' | 'company' | 'host'>('none');
   const [currentView, setCurrentView] = useState('landing');
   const [company, setCompany] = useState(MOCK_COMPANY);
   const [sessions, setSessions] = useState([]);
@@ -1717,6 +1753,20 @@ export default function ElderMatchApp() {
     setShowCommitModal(true);
   };
 
+  const switchToHost = () => {
+    setRole('host');
+    setCurrentView('host_dashboard');
+  };
+
+  const switchToCompany = () => {
+    setRole('none');
+    setCurrentView('landing');
+  };
+
+  if (role === 'host') {
+    return <HostPortal onSwitchRole={switchToCompany} />;
+  }
+
   return (
     <div className="min-h-screen bg-slate-50 font-sans text-slate-900 flex">
       {!['landing', 'signup', 'verification'].includes(currentView) && (
@@ -1727,6 +1777,7 @@ export default function ElderMatchApp() {
           handleCompanyUpdate={handleCompanyUpdate}
           mobileOpen={mobileMenuOpen}
           setMobileOpen={setMobileMenuOpen}
+          onSwitchRole={switchToHost}
         />
       )}
 
@@ -1742,7 +1793,7 @@ export default function ElderMatchApp() {
         )}
 
         <div className="flex-1 overflow-y-auto p-6 md:p-10">
-          {currentView === 'landing' && <LandingView setCurrentView={setCurrentView} />}
+          {currentView === 'landing' && <LandingView setCurrentView={setCurrentView} setRole={setRole} />}
           {currentView === 'signup' && <SignUpView setCurrentView={setCurrentView} />}
           {currentView === 'verification' && <VerificationView setCurrentView={setCurrentView} />}
           {currentView === 'onboarding' && (
@@ -1772,7 +1823,7 @@ export default function ElderMatchApp() {
             <ReportView company={company} handleCompanyUpdate={handleCompanyUpdate} sessions={sessions} />
           )}
           {currentView === 'pricing' && (
-  <PricingView company={company} handleCompanyUpdate={handleCompanyUpdate} />
+            <PricingView company={company} handleCompanyUpdate={handleCompanyUpdate} />
           )}
         </div>
       </main>
