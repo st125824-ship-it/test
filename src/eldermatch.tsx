@@ -1112,11 +1112,6 @@ const CommitModal = ({
   frequency, setFrequency, duration, setDuration, volunteers, setVolunteers,
   isConfirmed, setIsConfirmed 
 }) => {
-if (!selectedCenter) return null;
-
-const centerContact =
-  CENTER_CONTACTS[selectedCenter.id] || CENTER_CONTACTS.default;
-  
   const prediction = useMemo(() => {
     if (!selectedCenter) return null;
 
@@ -1216,9 +1211,12 @@ const centerContact =
     };
   }, [selectedCenter, company.industry, frequency, duration, volunteers]);
 
-  if (!selectedCenter) return null;
+if (!selectedCenter) return null;
 
-  if (isConfirmed) {
+const centerContact =
+  CENTER_CONTACTS[selectedCenter.id] || CENTER_CONTACTS.default;
+
+if (isConfirmed) {
     return (
       <div className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
         <div className="bg-white rounded-3xl p-8 max-w-md w-full text-center animate-in zoom-in-95 duration-300">
