@@ -850,7 +850,7 @@ export default function HostPortal({ onSwitchRole }: HostPortalProps) {
             <div className="w-64 h-full bg-white p-4 overflow-y-auto" onClick={e => e.stopPropagation()}>
               <div className="flex items-center gap-2 mb-6">
                 <Heart size={20} className="text-emerald-500" />
-                <span className="font-bold text-teal-900">ElderMatch Host</span>
+                <span className="font-bold text-teal-900">CSRConnect Host</span>
               </div>
               <div className="space-y-2">
                 {HOST_NAV_ITEMS.map(item => (
