@@ -187,7 +187,7 @@ const Sidebar = ({ company, currentView, setCurrentView, handleCompanyUpdate }) 
       <div className="bg-emerald-500 text-white p-2 rounded-xl">
         <Heart size={24} />
       </div>
-      <span className="text-xl font-bold text-teal-900 tracking-tight">ElderMatch</span>
+      <span className="text-xl font-bold text-teal-900 tracking-tight">CSRConnect</span>
     </div>
     
     <div className="px-4 pb-4">
