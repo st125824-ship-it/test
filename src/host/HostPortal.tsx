@@ -52,7 +52,7 @@ const HostSidebar = ({ currentView, setCurrentView, onSwitchRole }: {
         <Heart size={24} />
       </div>
       <div>
-        <span className="text-xl font-bold text-teal-900 tracking-tight block leading-none">ElderMatch</span>
+        <span className="text-xl font-bold text-teal-900 tracking-tight block leading-none">CSRConnect</span>
         <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-600">Host Portal</span>
       </div>
     </div>
