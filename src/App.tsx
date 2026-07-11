@@ -1570,7 +1570,7 @@ const SignUpView = ({ setCurrentView }) => {
             <Heart size={28} />
           </div>
           <h1 className="text-2xl font-bold text-teal-900 mb-1">Create Your Account</h1>
-          <p className="text-sm text-slate-600">Join the ElderMatch CSR platform</p>
+          <p className="text-sm text-slate-600">Join the CSRConnect platform</p>
         </div>
 
         <form onSubmit={handleSignUp} className="space-y-5">
