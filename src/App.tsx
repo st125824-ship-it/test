@@ -1464,7 +1464,7 @@ const LandingView = ({ setCurrentView, setRole }) => (
       </div>
 
       <h1 className="text-5xl md:text-6xl font-black text-teal-900 leading-tight">
-        Connect CSR Budget to<br/>Elderly Care Impact
+        Manage CSR Projects Smarter<br/>with CSRConnect
       </h1>
 
       <p className="text-lg text-slate-600 max-w-2xl mx-auto">
