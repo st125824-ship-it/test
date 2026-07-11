@@ -787,7 +787,7 @@ const DiscoverView = ({ company, setCurrentView, searchQuery, setSearchQuery, se
   <div className="space-y-6 animate-in fade-in duration-500">
     <div>
       <h1 className="text-3xl font-bold text-teal-900 mb-2">Discover Centers</h1>
-      <p className="text-slate-600">Browse and filter elderly care centers needing support across Thailand.</p>
+      <p className="text-slate-600">Browse and filter CSRConnect centers needing support across Thailand.</p>
       {company.tier === 'Premium' && (
         <div className="mt-4 bg-amber-50 border border-amber-200 rounded-lg p-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
