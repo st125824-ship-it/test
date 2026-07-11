@@ -26,8 +26,8 @@ const FAQS = [
     a: 'Go to "Impact Reports" in the sidebar. The report auto-populates with all your completed sessions — volunteer hours, attendance, feedback scores, and benchmark comparisons. You can export a PDF-ready summary for your annual ESG disclosure.',
   },
   {
-    q: 'How do I contact ElderlyConnect?',
-    a: 'You can reach us at hello@elderlyconnect.org for general enquiries, support@elderlyconnect.org for technical help, or partnerships@elderlyconnect.org for business opportunities. We\'re also reachable on LINE at @elderlyconnect and by phone at +66 (0)2 123 4567.',
+    q: 'How do I contact CSRConnect?',
+    a: 'You can reach us at hello@csrconnect.org for general enquiries, support@csrconnect.org for technical help, or partnerships@csrconnect.org for business opportunities. We\'re also reachable on LINE at @csrconnect and by phone at +66 (0)2 123 4567.',
   },
 ];
 
@@ -104,7 +104,7 @@ export default function SupportWidget() {
                 <Headphones size={20} className="text-white" />
               </div>
               <div>
-                <h3 className="text-base font-bold text-white">ElderlyConnect Support</h3>
+                <h3 className="text-base font-bold text-white">CSRConnect Support</h3>
                 <p className="text-xs text-white/70">How can we help you today?</p>
               </div>
             </div>
@@ -168,7 +168,7 @@ export default function SupportWidget() {
           <div className="px-5 py-3.5 border-t border-slate-100 bg-slate-50/80 rounded-b-3xl">
             <div className="flex items-center gap-2 text-xs text-slate-500">
               <div className="w-2 h-2 rounded-full bg-emerald-500" />
-              <span>Typical response within 1 business day · support@elderlyconnect.org</span>
+              <span>Typical response within 1 business day · support@csrconnect.org</span>
             </div>
           </div>
         </div>

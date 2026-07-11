@@ -11,7 +11,7 @@ export default function AppFooter() {
               <div className="w-9 h-9 rounded-xl bg-emerald-500 flex items-center justify-center">
                 <Heart size={18} className="text-white" />
               </div>
-              <span className="text-lg font-black tracking-tight">ElderlyConnect</span>
+              <span className="text-lg font-black tracking-tight">CSRConnect</span>
             </div>
             <p className="text-sm text-teal-300/70 leading-relaxed">
               Connecting businesses, volunteers, and elder care communities across Thailand.
@@ -26,8 +26,8 @@ export default function AppFooter() {
                 <Mail size={15} className="text-teal-400 shrink-0" />
                 <div>
                   <p className="text-xs text-teal-400/70">General Enquiries</p>
-                  <a href="mailto:hello@elderlyconnect.org" className="text-sm text-teal-100 hover:text-emerald-400 transition-colors">
-                    hello@elderlyconnect.org
+                  <a href="mailto:hello@csrconnect.org" className="text-sm text-teal-100 hover:text-emerald-400 transition-colors">
+                    hello@csrconnect.org
                   </a>
                 </div>
               </li>
@@ -35,8 +35,8 @@ export default function AppFooter() {
                 <Mail size={15} className="text-teal-400 shrink-0" />
                 <div>
                   <p className="text-xs text-teal-400/70">Support</p>
-                  <a href="mailto:support@elderlyconnect.org" className="text-sm text-teal-100 hover:text-emerald-400 transition-colors">
-                    support@elderlyconnect.org
+                  <a href="mailto:support@csrconnect.org" className="text-sm text-teal-100 hover:text-emerald-400 transition-colors">
+                    support@csrconnect.org
                   </a>
                 </div>
               </li>
@@ -44,8 +44,8 @@ export default function AppFooter() {
                 <Mail size={15} className="text-teal-400 shrink-0" />
                 <div>
                   <p className="text-xs text-teal-400/70">Partnerships</p>
-                  <a href="mailto:partnerships@elderlyconnect.org" className="text-sm text-teal-100 hover:text-emerald-400 transition-colors">
-                    partnerships@elderlyconnect.org
+                  <a href="mailto:partnerships@csrconnect.org" className="text-sm text-teal-100 hover:text-emerald-400 transition-colors">
+                    partnerships@csrconnect.org
                   </a>
                 </div>
               </li>
@@ -60,7 +60,7 @@ export default function AppFooter() {
                 <MessageCircle size={15} className="text-teal-400 shrink-0" />
                 <div>
                   <p className="text-xs text-teal-400/70">LINE Official</p>
-                  <span className="text-sm text-teal-100">@elderlyconnect</span>
+                  <span className="text-sm text-teal-100">@csrconnect</span>
                 </div>
               </li>
               <li className="flex items-center gap-2.5">
@@ -84,7 +84,7 @@ export default function AppFooter() {
         </div>
 
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-teal-500">
-          <span>© 2026 ElderlyConnect. All rights reserved.</span>
+          <span>© 2026 CSRConnect. All rights reserved.</span>
           <span className="flex items-center gap-1.5">
             <Heart size={11} className="text-emerald-500" /> Made with care for Thailand's elderly.
           </span>

@@ -5,10 +5,10 @@ import {
 } from 'lucide-react';
 
 const CONTACT_ITEMS = [
-  { label: 'General Enquiries', value: 'hello@elderlyconnect.org', icon: Mail, href: 'mailto:hello@elderlyconnect.org' },
-  { label: 'Support', value: 'support@elderlyconnect.org', icon: Mail, href: 'mailto:support@elderlyconnect.org' },
-  { label: 'Business Partnerships', value: 'partnerships@elderlyconnect.org', icon: Handshake, href: 'mailto:partnerships@elderlyconnect.org' },
-  { label: 'LINE Official', value: '@elderlyconnect', icon: MessageCircle, href: '#' },
+  { label: 'General Enquiries', value: 'hello@csrconnect.org', icon: Mail, href: 'mailto:hello@csrconnect.org' },
+  { label: 'Support', value: 'support@csrconnect.org', icon: Mail, href: 'mailto:support@csrconnect.org' },
+  { label: 'Business Partnerships', value: 'partnerships@csrconnect.org', icon: Handshake, href: 'mailto:partnerships@csrconnect.org' },
+  { label: 'LINE Official', value: '@csrconnect', icon: MessageCircle, href: '#' },
   { label: 'Phone', value: '+66 (0)2 123 4567', icon: Phone, href: 'tel:+6621234567' },
   { label: 'Office', value: 'Bangkok, Thailand', icon: MapPin, href: '#' },
 ];
@@ -41,7 +41,7 @@ function ContactModal({ type, onClose }: { type: ModalType; onClose: () => void 
     },
     demo: {
       title: 'Book a Demo',
-      subtitle: "See the ElderlyConnect platform in action. We'll walk you through everything.",
+      subtitle: "See the CSRConnect platform in action. We'll walk you through everything.",
       icon: <Calendar size={22} className="text-indigo-600" />,
       messagePlaceholder: "Preferred dates or times, and any specific areas you'd like to see…",
       cta: 'Book Demo',
@@ -157,7 +157,7 @@ export default function ContactSection() {
               Get in Touch
             </div>
             <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
-              Work With ElderlyConnect
+              Work With CSRConnect
             </h2>
             <p className="text-teal-100/80 text-lg max-w-2xl mx-auto leading-relaxed">
               Whether you're an elder care centre looking for support, a company planning CSR initiatives,
@@ -173,7 +173,7 @@ export default function ContactSection() {
                   <Heart size={26} className="text-emerald-400" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-white">ElderlyConnect</h3>
+                  <h3 className="text-xl font-bold text-white">CSRConnect</h3>
                   <p className="text-teal-200/70 text-sm">Connecting businesses, volunteers, and elder care communities across Thailand.</p>
                 </div>
               </div>
