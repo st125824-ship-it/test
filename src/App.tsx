@@ -1496,7 +1496,7 @@ const LandingView = ({ setCurrentView, setRole }) => (
           <div className="w-14 h-14 rounded-2xl bg-teal-50 text-teal-600 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
             <Heart size={28} />
           </div>
-          <h3 className="text-xl font-bold text-teal-900 mb-2">I'm an Elder Care Center</h3>
+          <h3 className="text-xl font-bold text-teal-900 mb-2">I'm a CSRConnect Center</h3>
           <p className="text-sm text-slate-600 mb-4 leading-relaxed">
             Publish support needs, receive applications from companies, schedule volunteers, and track your impact.
           </p>
