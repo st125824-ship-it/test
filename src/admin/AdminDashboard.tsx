@@ -186,7 +186,7 @@ export default function AdminDashboard({ onBack }: { onBack: () => void }) {
                 <Heart size={18} />
               </div>
               <div>
-                <span className="font-bold text-teal-900 text-sm">with CSRConnect</span>
+                <span className="font-bold text-teal-900 text-sm">CSRConnect</span>
                 <span className="ml-2 text-xs bg-teal-100 text-teal-700 px-2 py-0.5 rounded-full font-medium">Admin</span>
               </div>
             </div>
