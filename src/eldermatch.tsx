@@ -1475,7 +1475,7 @@ export default function ElderMatchApp() {
         <header className="md:hidden bg-white border-b border-teal-100 p-4 flex items-center justify-between shrink-0">
           <div className="flex items-center gap-2">
             <Heart size={20} className="text-emerald-500" />
-            <span className="font-bold text-teal-900">ElderMatch</span>
+            <span className="font-bold text-teal-900">CSRConnect</span>
           </div>
           <button className="text-slate-500">Menu</button>
         </header>
