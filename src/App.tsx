@@ -1010,7 +1010,9 @@ const MatchResultsView = ({ company, matchedCenters, openCommitModal, setCurrent
   );
 };
 
-const ReportView = ({ company, handleCompanyUpdate, sessions }) => {
+const ReportView = ({ company, handleCompanyUpdate, sessions,
+5
+setCurrentView }) => {
   const [reportPurpose, setReportPurpose] = useState('ESG Disclosure');
   const [esgStandard, setEsgStandard] = useState('SET ESG Ratings');
   const [reportTimestamp, setReportTimestamp] = useState(new Date().toLocaleString());
@@ -1070,7 +1072,7 @@ const ReportView = ({ company, handleCompanyUpdate, sessions }) => {
   <li>• AI Matching Recommendations</li>
 </ul>
           <button
-            onClick={() => handleCompanyUpdate({tier: 'Premium'})}
+            onClick={() => setCurrentView('pricing')}
             className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-xl font-bold transition-colors"
           >
             Upgrade to Premium
@@ -1855,6 +1857,7 @@ export default function ElderMatchApp() {
           currentView={currentView}
           setCurrentView={setCurrentView}
           handleCompanyUpdate={handleCompanyUpdate}
+          setCurrentView={setCurrentView}
           mobileOpen={mobileMenuOpen}
           setMobileOpen={setMobileMenuOpen}
           onSwitchRole={switchToHost}
