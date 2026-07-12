@@ -1044,8 +1044,31 @@ const ReportView = ({ company, handleCompanyUpdate, sessions }) => {
           <div className="bg-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm">
             <ShieldCheck className="text-slate-400" size={32} />
           </div>
-          <h2 className="text-2xl font-bold text-slate-800 mb-2">Basic Reporting Available</h2>
-          <p className="text-slate-600 mb-6">Your current plan includes basic activity metrics on the dashboard. Upgrade to Premium for exportable, ESG-ready narrative reports.</p>
+          <h2 className="text-2xl font-bold text-slate-800 mb-2">
+  Free Plan Reporting
+</h2>
+
+<p className="text-slate-600 mb-6">
+  Your Free plan includes:
+</p>
+
+<ul className="text-left text-sm text-slate-600 max-w-md mx-auto space-y-2 mb-6">
+  <li>• Activity Log Tracking</li>
+  <li>• CSR Campaign Summary Report</li>
+  <li>• Dashboard Metrics & Program Overview</li>
+</ul>
+
+<p className="text-slate-600 mb-6">
+  Upgrade to Premium to unlock:
+</p>
+
+<ul className="text-left text-sm text-slate-600 max-w-md mx-auto space-y-2 mb-6">
+  <li>• Standard ESG Reports (SET ESG, GRI, SDG)</li>
+  <li>• Impact Reports</li>
+  <li>• Report History</li>
+  <li>• PDF & Word Export</li>
+  <li>• AI Matching Recommendations</li>
+</ul>
           <button
             onClick={() => handleCompanyUpdate({tier: 'Premium'})}
             className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-xl font-bold transition-colors"
@@ -1120,7 +1143,7 @@ const ReportView = ({ company, handleCompanyUpdate, sessions }) => {
                   <div className="bg-blue-100 p-3 rounded-xl text-blue-600"><FileText size={24}/></div>
                   <div>
                     <p className="font-bold text-slate-800">Word Document</p>
-                    <p className="text-xs text-slate-500">Editable format</p>
+                    <p className="text-xs text-slate-500">Export format</p>
                   </div>
                </div>
             </div>
@@ -1372,23 +1395,24 @@ const CommitModal = ({
 };
 
 const PricingView = ({ company, handleCompanyUpdate }) => {
-  const features = [
-    { name: 'Signup & Dashboard', free: true, premium: true },
-    { name: 'Optional CSR Profile', free: true, premium: true },
-    { name: 'Verified CSR Badge', free: true, premium: true },
-    { name: 'Browse Centers (Filters)', free: true, premium: true },
-    { name: 'Commitment Flow', free: true, premium: true },
-    { name: 'Activity Log', free: true, premium: true },
-    { name: 'Basic CSR Report + Metrics', free: true, premium: true },
-    { name: 'AI Matching Engine', free: false, premium: true },
-    { name: 'Match Reasoning (1-line)', free: false, premium: true },
-    { name: 'Confidence Slider', free: false, premium: true },
-    { name: 'Report Purpose Selector', free: false, premium: true },
-    { name: 'ESG-Ready Narrative', free: false, premium: true },
-    { name: 'Company Branding', free: false, premium: true },
-    { name: 'PDF / Word Export', free: false, premium: true },
-    { name: 'Report History', free: false, premium: true },
-  ];
+const features = [
+  { name: 'Signup & Dashboard', free: true, premium: true },
+  { name: 'Company CSR Profile', free: true, premium: true },
+  { name: 'Verified CSR Badge', free: true, premium: true },
+  { name: 'Browse Centers & Commit Programs', free: true, premium: true },
+  { name: 'Activity Log', free: true, premium: true },
+
+  { name: 'CSR Campaign Summary Report', free: true, premium: true },
+
+  { name: 'AI Matching Engine', free: false, premium: true },
+  { name: 'AI Match Reasoning', free: false, premium: true },
+  { name: 'Impact Report', free: false, premium: true },
+  { name: 'Standard ESG Report (SET ESG / GRI / SDG)', free: false, premium: true },
+  { name: 'Report Customization', free: false, premium: true },
+  { name: 'Report History', free: false, premium: true },
+  { name: 'PDF Export', free: false, premium: true },
+  { name: 'Word Export', free: false, premium: true },
+];
 
   const Cell = ({ on }) => on
     ? <CheckCircle2 className="text-emerald-500 mx-auto" size={20} />
@@ -1408,7 +1432,7 @@ const PricingView = ({ company, handleCompanyUpdate }) => {
             {company.tier === 'Free' && <span className="text-xs font-bold bg-emerald-100 text-emerald-700 px-2 py-1 rounded-full">Current</span>}
           </div>
           <p className="text-3xl font-black text-slate-900 mb-1">฿0<span className="text-sm font-medium text-slate-400">/mo</span></p>
-          <p className="text-sm text-slate-500 mb-4">Browse centers & log impact manually.</p>
+          <p className="text-sm text-slate-500 mb-4">Includes Activity Log and CSR Campaign Summary Reports.</p>
           <button onClick={() => handleCompanyUpdate({ tier: 'Free' })} className="w-full py-2.5 rounded-xl font-medium border border-slate-200 text-slate-700 hover:bg-slate-50 transition-colors">
             {company.tier === 'Free' ? 'Active Plan' : 'Switch to Free'}
           </button>
@@ -1423,7 +1447,7 @@ const PricingView = ({ company, handleCompanyUpdate }) => {
             {company.tier === 'Premium' && <span className="text-xs font-bold bg-amber-100 text-amber-700 px-2 py-1 rounded-full">Current</span>}
           </div>
           <p className="text-3xl font-black text-teal-900 mb-1">฿4,900<span className="text-sm font-medium text-slate-400">/mo</span></p>
-          <p className="text-sm text-slate-500 mb-4">AI matching, prediction & ESG reports.</p>
+          <p className="text-sm text-slate-500 mb-4">AI Matching, Impact Reports, ESG Reports, Report History and Export Tools.</p>
           <button onClick={() => handleCompanyUpdate({ tier: 'Premium' })} className="w-full py-2.5 rounded-xl font-bold bg-emerald-600 hover:bg-emerald-700 text-white transition-colors shadow-sm">
             {company.tier === 'Premium' ? 'Active Plan' : 'Upgrade to Premium'}
           </button>
