@@ -1,0 +1,62 @@
+{
+  "meta": {
+    "datasetSize": "312 invites sent across 78 active referrers — all funnel stages tracked end-to-end",
+    "note": "Synthetic data for demonstration; values are internally consistent with the Analytics dashboard."
+  },
+  "kpis": [
+    { "label": "Invites Sent", "sublabel": "Total referral invites (all sources)", "value": 312, "format": "number" },
+    { "label": "Companies Referred", "sublabel": "Organizations that registered via referral", "value": 41, "format": "number" },
+    { "label": "Hosts Referred", "sublabel": "Elder care centers onboarded via referral", "value": 18, "format": "number" },
+    { "label": "Conversion Rate", "sublabel": "Invite → any signup", "value": 28.8, "format": "percent" },
+    { "label": "Premium Upgrades", "sublabel": "Referred orgs that upgraded to paid", "value": 12, "format": "number" }
+  ],
+  "funnel": [
+    { "stage": "Invite", "count": 312, "pct": 100.0 },
+    { "stage": "Register", "count": 152, "pct": 48.7 },
+    { "stage": "Verify", "count": 108, "pct": 34.6 },
+    { "stage": "First Program", "count": 78, "pct": 25.0 },
+    { "stage": "Premium", "count": 12, "pct": 3.8 }
+  ],
+  "companyLeaderboard": [
+    { "rank": 1, "name": "PTT Public Company Ltd", "value": 14, "secondary": "5 converted · 2 premium" },
+    { "rank": 2, "name": "Siam Commercial Bank", "value": 11, "secondary": "4 converted · 1 premium" },
+    { "rank": 3, "name": "Central Group", "value": 9, "secondary": "3 converted · 1 premium" },
+    { "rank": 4, "name": "Thai Union Group", "value": 8, "secondary": "3 converted" },
+    { "rank": 5, "name": "Indorama Ventures", "value": 7, "secondary": "2 converted · 1 premium" },
+    { "rank": 6, "name": "Advanced Info Service (AIS)", "value": 6, "secondary": "2 converted" },
+    { "rank": 7, "name": "Bangkok Bank", "value": 5, "secondary": "2 converted" },
+    { "rank": 8, "name": "Charoen Pokphand Group", "value": 5, "secondary": "1 converted · 1 premium" }
+  ],
+  "hostLeaderboard": [
+    { "rank": 1, "name": "Santisuk Elder Care Center", "value": 9, "secondary": "4 new hosts onboarded" },
+    { "rank": 2, "name": "Baan Kamlangchi Foundation", "value": 7, "secondary": "3 new hosts onboarded" },
+    { "rank": 3, "name": "Raksa Thaithang Elderly Home", "value": 6, "secondary": "3 new hosts onboarded" },
+    { "rank": 4, "name": "Suwannee Care Residence", "value": 5, "secondary": "2 new hosts onboarded" },
+    { "rank": 5, "name": "Phra Nakhon Senior Center", "value": 4, "secondary": "2 new hosts onboarded" },
+    { "rank": 6, "name": "Watsana Elderly Shelter", "value": 3, "secondary": "1 new host onboarded" },
+    { "rank": 7, "name": "Bamboo Grove Care Home", "value": 3, "secondary": "1 new host onboarded" },
+    { "rank": 8, "name": "Mae Fa Luang Senior House", "value": 2, "secondary": "1 new host onboarded" }
+  ],
+  "partnerLeaderboard": [
+    { "rank": 1, "name": "CSR Thailand Network", "value": 28, "secondary": "9 converted · 3 premium" },
+    { "rank": 2, "name": "ThaiVolunteer Federation", "value": 22, "secondary": "7 converted · 2 premium" },
+    { "rank": 3, "name": "Department of Older Persons", "value": 19, "secondary": "6 converted · 2 premium" },
+    { "rank": 4, "name": "Thailand Development Research Institute", "value": 15, "secondary": "4 converted · 1 premium" },
+    { "rank": 5, "name": "Kenan Foundation Asia", "value": 12, "secondary": "3 converted · 1 premium" },
+    { "rank": 6, "name": "Social Enterprise Thailand", "value": 10, "secondary": "2 converted" },
+    { "rank": 7, "name": "Rotary Thailand", "value": 8, "secondary": "1 converted" },
+    { "rank": 8, "name": "Junior Chamber International TH", "value": 6, "secondary": "1 converted · 1 premium" }
+  ],
+  "activityFeed": [
+    { "type": "premium", "actor": "PTT Public Company Ltd", "action": "referred org upgraded to Premium", "target": "Mitr Phol Sugar Corp", "date": "2026-07-12" },
+    { "type": "host", "actor": "Santisuk Elder Care Center", "action": "referred a new host", "target": "Thewet Senior Residence", "date": "2026-07-11" },
+    { "type": "verify", "actor": "CSR Thailand Network", "action": "referred company verified profile", "target": "Krungthai-AXA Life", "date": "2026-07-11" },
+    { "type": "program", "actor": "Siam Commercial Bank", "action": "referred org completed first program", "target": "Thai Beverage Ltd", "date": "2026-07-10" },
+    { "type": "invite", "actor": "Central Group", "action": "sent 3 invites", "target": "—", "date": "2026-07-10" },
+    { "type": "register", "actor": "ThaiVolunteer Federation", "action": "referred org registered", "target": "Srithai Superware", "date": "2026-07-09" },
+    { "type": "premium", "actor": "Indorama Ventures", "action": "referred org upgraded to Premium", "target": "GC Plant 2 Co.", "date": "2026-07-08" },
+    { "type": "verify", "actor": "Department of Older Persons", "action": "referred host verified profile", "target": "Navamin Elderly Home", "date": "2026-07-08" },
+    { "type": "host", "actor": "Baan Kamlangchi Foundation", "action": "referred a new host", "target": "Graceful Aging Center", "date": "2026-07-07" },
+    { "type": "program", "actor": "Thai Union Group", "action": "referred org completed first program", "target": "Betagro Group", "date": "2026-07-06" }
+  ]
+}

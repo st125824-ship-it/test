@@ -1,0 +1,91 @@
+{
+  "meta": {
+    "datasetSize": "78 active companies · 45 active hosts · 10 industries · 6 provinces",
+    "note": "Synthetic data for demonstration; values are internally consistent with the Analytics dashboard."
+  },
+  "kpis": [
+    { "label": "Avg Platform Engagement", "sublabel": "Across all active programs", "value": 62.4, "format": "percent" },
+    { "label": "Avg Attendance Rate", "sublabel": "Volunteer turnout vs. committed", "value": 71.8, "format": "percent" },
+    { "label": "Avg Impact Score", "sublabel": "Composite impact metric (0–100)", "value": 58.9, "format": "number" },
+    { "label": "Avg Volunteer Hours", "sublabel": "Per program instance", "value": 184, "format": "number" },
+    { "label": "Overall Retention Rate", "sublabel": "Companies active for 2+ quarters", "value": 76.9, "format": "percent" },
+    { "label": "Repeat Program Rate", "sublabel": "Companies running 2+ programs", "value": 76.9, "format": "percent" }
+  ],
+  "companyRanking": [
+    { "rank": 1, "name": "PTT Public Company Ltd", "engagement": 78.2, "attendance": 84.1, "impact": 82, "hours": 312, "retention": 100, "repeat": 100 },
+    { "rank": 2, "name": "Siam Commercial Bank", "engagement": 74.5, "attendance": 79.3, "impact": 76, "hours": 286, "retention": 100, "repeat": 100 },
+    { "rank": 3, "name": "Central Group", "engagement": 71.8, "attendance": 76.9, "impact": 71, "hours": 254, "retention": 100, "repeat": 100 },
+    { "rank": 4, "name": "Thai Union Group", "engagement": 68.4, "attendance": 74.2, "impact": 68, "hours": 231, "retention": 100, "repeat": 100 },
+    { "rank": 5, "name": "Indorama Ventures", "engagement": 66.1, "attendance": 71.8, "impact": 65, "hours": 218, "retention": 75, "repeat": 100 },
+    { "rank": 6, "name": "Advanced Info Service (AIS)", "engagement": 64.2, "attendance": 69.5, "impact": 62, "hours": 198, "retention": 75, "repeat": 75 },
+    { "rank": 7, "name": "Bangkok Bank", "engagement": 61.8, "attendance": 68.1, "impact": 59, "hours": 184, "retention": 75, "repeat": 75 },
+    { "rank": 8, "name": "Charoen Pokphand Group", "engagement": 59.3, "attendance": 66.4, "impact": 56, "hours": 172, "retention": 75, "repeat": 75 },
+    { "rank": 9, "name": "Krungthai Bank", "engagement": 56.7, "attendance": 63.2, "impact": 53, "hours": 158, "retention": 50, "repeat": 50 },
+    { "rank": 10, "name": "Thai Beverage Ltd", "engagement": 54.1, "attendance": 60.8, "impact": 50, "hours": 141, "retention": 50, "repeat": 50 }
+  ],
+  "hostRanking": [
+    { "rank": 1, "name": "Santisuk Elder Care Center", "engagement": 81.4, "attendance": 88.2, "impact": 84, "hours": 342, "retention": 100, "repeat": 100 },
+    { "rank": 2, "name": "Baan Kamlangchi Foundation", "engagement": 76.8, "attendance": 82.1, "impact": 78, "hours": 298, "retention": 100, "repeat": 100 },
+    { "rank": 3, "name": "Raksa Thaithang Elderly Home", "engagement": 72.3, "attendance": 78.4, "impact": 73, "hours": 264, "retention": 100, "repeat": 100 },
+    { "rank": 4, "name": "Suwannee Care Residence", "engagement": 68.7, "attendance": 74.8, "impact": 68, "hours": 238, "retention": 100, "repeat": 100 },
+    { "rank": 5, "name": "Phra Nakhon Senior Center", "engagement": 65.2, "attendance": 71.3, "impact": 64, "hours": 212, "retention": 75, "repeat": 100 },
+    { "rank": 6, "name": "Watsana Elderly Shelter", "engagement": 62.4, "attendance": 68.9, "impact": 61, "hours": 194, "retention": 75, "repeat": 75 },
+    { "rank": 7, "name": "Bamboo Grove Care Home", "engagement": 59.1, "attendance": 65.7, "impact": 57, "hours": 176, "retention": 75, "repeat": 75 },
+    { "rank": 8, "name": "Mae Fa Luang Senior House", "engagement": 56.3, "attendance": 62.4, "impact": 53, "hours": 158, "retention": 50, "repeat": 50 }
+  ],
+  "industryBenchmark": [
+    { "industry": "Banking & Finance", "engagement": 66.4, "attendance": 72.1, "impact": 64, "hours": 198, "retention": 82, "repeatProgram": 82 },
+    { "industry": "Energy & Utilities", "engagement": 64.8, "attendance": 70.3, "impact": 62, "hours": 186, "retention": 78, "repeatProgram": 76 },
+    { "industry": "Food & Beverage", "engagement": 63.1, "attendance": 69.2, "impact": 60, "hours": 178, "retention": 75, "repeatProgram": 76 },
+    { "industry": "Insurance", "engagement": 61.7, "attendance": 68.4, "impact": 59, "hours": 172, "retention": 78, "repeatProgram": 75 },
+    { "industry": "Logistics & Transport", "engagement": 60.4, "attendance": 66.8, "impact": 57, "hours": 164, "retention": 72, "repeatProgram": 70 },
+    { "industry": "Manufacturing", "engagement": 59.8, "attendance": 65.3, "impact": 56, "hours": 158, "retention": 75, "repeatProgram": 75 },
+    { "industry": "Real Estate & Construction", "engagement": 58.2, "attendance": 64.1, "impact": 54, "hours": 151, "retention": 68, "repeatProgram": 68 },
+    { "industry": "Retail & Consumer", "engagement": 56.7, "attendance": 62.4, "impact": 53, "hours": 144, "retention": 70, "repeatProgram": 68 },
+    { "industry": "Technology & Telecom", "engagement": 55.1, "attendance": 61.2, "impact": 51, "hours": 136, "retention": 68, "repeatProgram": 65 },
+    { "industry": "Tourism & Hospitality", "engagement": 53.4, "attendance": 59.8, "impact": 49, "hours": 128, "retention": 65, "repeatProgram": 62 }
+  ],
+  "provinceBenchmark": [
+    { "province": "Bangkok", "engagement": 68.2, "attendance": 74.8, "impact": 68, "hours": 218, "retention": 82, "repeatProgram": 80, "programs": 52 },
+    { "province": "Chiang Mai", "engagement": 61.4, "attendance": 68.2, "impact": 60, "hours": 178, "retention": 75, "repeatProgram": 75, "programs": 34 },
+    { "province": "Chonburi", "engagement": 59.8, "attendance": 66.4, "impact": 57, "hours": 164, "retention": 72, "repeatProgram": 70, "programs": 28 },
+    { "province": "Phuket", "engagement": 57.3, "attendance": 63.8, "impact": 54, "hours": 148, "retention": 68, "repeatProgram": 68, "programs": 21 },
+    { "province": "Khon Kaen", "engagement": 54.6, "attendance": 61.2, "impact": 51, "hours": 132, "retention": 65, "repeatProgram": 62, "programs": 17 },
+    { "province": "Songkhla", "engagement": 52.1, "attendance": 58.7, "impact": 48, "hours": 118, "retention": 60, "repeatProgram": 58, "programs": 13 }
+  ],
+  "retentionTrend": [
+    { "cohort": "Q1 2025", "retention": 68.2, "repeatProgram": 64.1 },
+    { "cohort": "Q2 2025", "retention": 71.4, "repeatProgram": 67.8 },
+    { "cohort": "Q3 2025", "retention": 73.8, "repeatProgram": 70.2 },
+    { "cohort": "Q4 2025", "retention": 75.1, "repeatProgram": 73.6 },
+    { "cohort": "Q1 2026", "retention": 76.9, "repeatProgram": 76.9 },
+    { "cohort": "Q2 2026", "retention": 78.4, "repeatProgram": 78.1 }
+  ],
+  "aiInsights": [
+    {
+      "icon": "trending",
+      "text": "Top performer PTT scores 25.6pp above platform average on engagement (78.2 vs 62.4) — the gap correlates with Premium AI Matching usage and 3+ repeat programs.",
+      "tone": "positive"
+    },
+    {
+      "icon": "alert",
+      "text": "Tourism & Hospitality is the lowest-scoring industry on all five metrics (engagement 53.4%, retention 65%) and shows a 14.8pp engagement gap behind Banking & Finance — a candidate for targeted retention outreach.",
+      "tone": "warning"
+    },
+    {
+      "icon": "info",
+      "text": "Geographic disparity: Bangkok outperforms Songkhla by 16.1pp on engagement (68.2 vs 52.1) and 22pp on retention (82 vs 60). Provincial hosts in Songkhla and Khon Kaen warrant additional onboarding support.",
+      "tone": "warning"
+    },
+    {
+      "icon": "brain",
+      "text": "AI-matched programs (Premium tier) average 71.8 engagement vs 58.2 for manual browse — a 13.6pp lift. Companies using AI matching are 2.4× more likely to run a repeat program within 2 quarters.",
+      "tone": "positive"
+    },
+    {
+      "icon": "trending",
+      "text": "Retention is trending upward: Q2 2026 cohort retention is 78.4%, up 10.2pp from Q1 2025 (68.2%). Repeat Program Rate follows the same trajectory, confirming that CSR programs improve with sustained engagement.",
+      "tone": "positive"
+    }
+  ]
+}
