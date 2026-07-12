@@ -1011,7 +1011,6 @@ const MatchResultsView = ({ company, matchedCenters, openCommitModal, setCurrent
 };
 
 const ReportView = ({ company, handleCompanyUpdate, sessions,
-5
 setCurrentView }) => {
   const [reportPurpose, setReportPurpose] = useState('ESG Disclosure');
   const [esgStandard, setEsgStandard] = useState('SET ESG Ratings');
