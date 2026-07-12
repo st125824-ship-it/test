@@ -1900,7 +1900,7 @@ export default function ElderMatchApp() {
             <ActivityLogView sessions={sessions} setSessions={setSessions} />
           )}
           {currentView === 'report' && (
-            <ReportView company={company} handleCompanyUpdate={handleCompanyUpdate} sessions={sessions} />
+            <ReportView company={company} handleCompanyUpdate={handleCompanyUpdate} sessions={sessions} setCurrentView={setCurrentView} />
           )}
           {currentView === 'pricing' && (
             <PricingView company={company} handleCompanyUpdate={handleCompanyUpdate} />
