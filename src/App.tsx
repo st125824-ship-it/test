@@ -1855,7 +1855,6 @@ export default function ElderMatchApp() {
           currentView={currentView}
           setCurrentView={setCurrentView}
           handleCompanyUpdate={handleCompanyUpdate}
-          setCurrentView={setCurrentView}
           mobileOpen={mobileMenuOpen}
           setMobileOpen={setMobileMenuOpen}
           onSwitchRole={switchToHost}
